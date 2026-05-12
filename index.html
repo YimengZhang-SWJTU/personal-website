@@ -1,76 +1,169 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>张一萌个人主页</title>
+<title>张义萌 / Yimeng Zhang</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; }
-header { background-color:#004080; color:white; padding:20px; text-align:center; }
-nav { background-color:#f0f0f0; padding:10px; text-align:center; }
-nav button { margin:0 5px; padding:5px 10px; }
-section { padding:20px; max-width:900px; margin:auto; }
-h2 { color:#004080; }
-footer { background-color:#004080; color:white; text-align:center; padding:10px; margin-top:20px; }
+body { font-family: "Helvetica Neue", Arial, sans-serif; margin:0; padding:0; background:#f8f8f8; color:#333; line-height:1.6;}
+header { background:#004080; color:#fff; text-align:center; padding:30px 20px;}
+header img { border-radius:50%; width:150px; height:150px; object-fit:cover; margin-bottom:15px;}
+header h1 { margin:0; font-size:2.5em;}
+header h2 { margin:5px 0 0 0; font-weight:normal; font-size:1.2em;}
+.lang-toggle { text-align:right; padding:10px 20px;}
+.lang-toggle button { margin-left:10px; padding:5px 10px; cursor:pointer; border:none; background:#0055aa; color:#fff; border-radius:4px;}
+.lang-toggle button:hover { background:#00264d;}
+nav { background:#003366; text-align:center; padding:10px;}
+nav button { margin:0 5px; padding:6px 12px; background:#0055aa; color:white; border:none; border-radius:4px; cursor:pointer;}
+nav button:hover { background:#00264d;}
+section { max-width:1000px; margin:40px auto; padding:20px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,0.1);}
+section h3 { border-bottom:2px solid #004080; padding-bottom:10px; color:#004080;}
+section ul { margin:10px 0 20px 20px;}
+table { border-collapse:collapse; width:100%; margin:10px 0;}
+table, th, td { border:1px solid #ccc; padding:8px; text-align:left;}
+th { background:#eee;}
+footer { text-align:center; padding:20px; background:#004080; color:#fff;}
 .hidden { display:none; }
+.cv-button { display:inline-block; margin-top:10px; padding:6px 12px; background:#0055aa; color:#fff; text-decoration:none; border-radius:4px;}
+.cv-button:hover { background:#00264d;}
 </style>
 </head>
 <body>
 
 <header>
-  <h1 id="name">张一萌 / Yimeng Zhang</h1>
-  <p id="title">教授 / Professor</p>
+    <img src="avatar.jpg" alt="Yimeng Zhang">
+    <h1>张义萌 / Yimeng Zhang</h1>
+    <h2>博士，副研究员，硕士生导师 / Ph.D., Associate Researcher, Master Supervisor</h2>
 </header>
 
+<div class="lang-toggle">
+    Language: 
+    <button onclick="showLang('zh')">中文</button>
+    <button onclick="showLang('en')">English</button>
+</div>
+
 <nav>
-  <button onclick="showLang('zh')">中文</button>
-  <button onclick="showLang('en')">English</button>
+    <button onclick="scrollToSection('about')">关于 / About</button>
+    <button onclick="scrollToSection('education')">教育经历 / Education</button>
+    <button onclick="scrollToSection('research')">研究方向 / Research</button>
+    <button onclick="scrollToSection('projects')">科研项目 / Projects</button>
+    <button onclick="scrollToSection('publications')">代表性论文 / Publications</button>
+    <button onclick="scrollToSection('admissions')">招生信息 / Admissions</button>
+    <button onclick="scrollToSection('contact')">联系方式 / Contact</button>
 </nav>
 
 <section id="about">
-  <h2 class="zh">关于我</h2>
-  <h2 class="en hidden">About Me</h2>
-  <p class="zh">张一萌，四川西南交通大学教授，研究方向为单细胞转录组学、肿瘤生物学和计算生物学。</p>
-  <p class="en hidden">Yimeng Zhang, Professor at Southwest Jiaotong University. Research interests include single-cell transcriptomics, cancer biology, and computational biology.</p>
+<h3 class="zh">关于我</h3>
+<h3 class="en hidden">About Me</h3>
+<p class="zh">
+张义萌，博士，副研究员，硕士生导师，四川省天府峨眉计划青年人才（原省青年千人），入选教育部海外博士后引才计划。担任国家自然科学基金通讯评审专家，教育部研究生学位论文通讯评议专家，世界交通运输大会青年委员，以及 Transportation Research B/C/E 等期刊审稿人。荷兰代尔夫特理工大学交通工程与物流专业博士毕业，博士后研究方向多式联运及多模式交通优化。
+</p>
+<p class="en hidden">
+Yimeng Zhang, Ph.D., Associate Researcher, Master Supervisor, Sichuan Tianfu Emei Program Young Talent, selected for the MOE Postdoctoral Talent Program. Reviewer for NSFC, graduate thesis expert, youth committee member of the World Conference on Transport, and reviewer for Transportation Research B/C/E. Ph.D. in Transport and Logistics from Delft University of Technology; postdoctoral research focuses on multimodal transport and optimization.
+</p>
+<a href="CV.pdf" class="cv-button">下载 CV / Download CV</a>
+</section>
+
+<section id="education">
+<h3 class="zh">教育经历</h3>
+<h3 class="en hidden">Education</h3>
+<ul class="zh">
+<li>2019.9–2023.6 代尔夫特理工大学，交通运输规划与管理，博士学位</li>
+<li>2016.9–2019.6 武汉理工大学，交通信息工程及控制，硕士学位</li>
+<li>2012.9–2016.6 武汉理工大学，航海技术，学士学位</li>
+</ul>
+<ul class="en hidden">
+<li>2019.9–2023.6 Delft University of Technology, Transport Planning & Management, Ph.D.</li>
+<li>2016.9–2019.6 Wuhan University of Technology, Transportation Engineering & Control, M.Sc.</li>
+<li>2012.9–2016.6 Wuhan University of Technology, Navigation Technology, B.Sc.</li>
+</ul>
 </section>
 
 <section id="research">
-  <h2 class="zh">研究方向</h2>
-  <h2 class="en hidden">Research Interests</h2>
-  <ul class="zh">
-    <li>单细胞转录组分析</li>
-    <li>肿瘤微环境与免疫学</li>
-    <li>计算生物学方法开发</li>
-  </ul>
-  <ul class="en hidden">
-    <li>Single-cell transcriptomics</li>
-    <li>Tumor microenvironment and immunology</li>
-    <li>Computational biology method development</li>
-  </ul>
+<h3 class="zh">研究方向</h3>
+<h3 class="en hidden">Research Interests</h3>
+<ul class="zh">
+<li>多式联运优化</li>
+<li>多模式交通优化</li>
+<li>基于强化学习的不确定性路径优化</li>
+<li>基于机器学习的数据驱动优化</li>
+<li>交通供需协同路径优化</li>
+</ul>
+<ul class="en hidden">
+<li>Multimodal transport optimization</li>
+<li>Multi-mode transport optimization</li>
+<li>RL-based route optimization under uncertainty</li>
+<li>Data-driven optimization using machine learning</li>
+<li>Traffic supply-demand coordinated routing optimization</li>
+</ul>
+</section>
+
+<section id="projects">
+<h3 class="zh">科研项目</h3>
+<h3 class="en hidden">Research Projects</h3>
+<ul class="zh">
+<li>国家自然科学基金青年项目：公铁水多网时间不确定性下多式联运运输计划动态协同优化研究（2025-2027）</li>
+<li>四川省天府峨眉计划青年人才项目（2025-2027）</li>
+<li>四川省自然科学基金青年项目：“四向八廊”多式联运随机时变网络下多主体协同运输组织优化研究（2025-2027）</li>
+<li>河北省春晖人才专项：公铁水多网时间不确定性下唐山港多式联运运输计划动态优化研究（2024-2026）</li>
+<li>中央高校基本科研业务费：多式联运多决策者多目标分布式协同优化研究（2025-2027）</li>
+</ul>
+<ul class="en hidden">
+<li>NSFC Youth Project: Dynamic collaborative optimization of multimodal transport under uncertainty (2025-2027)</li>
+<li>Sichuan Tianfu Emei Program Young Talent Project (2025-2027)</li>
+<li>Sichuan NSFC Youth Project: Multi-agent optimization for multimodal stochastic transport networks (2025-2027)</li>
+<li>Hebei Chunhui Talent Project: Dynamic optimization of Tangshan Port multimodal transport (2024-2026)</li>
+<li>Central Universities Basic Research Fund: Multi-objective distributed optimization for multimodal transport (2025-2027)</li>
+</ul>
+</section>
+
+<section id="publications">
+<h3 class="zh">代表性论文（通讯作者）</h3>
+<h3 class="en hidden">Representative Publications (Corresponding Author)</h3>
+<ul class="zh">
+<li>Zhang Y et al., Air-Ground Multimodal Transport Planning for Joint Passenger Mobility and Parcel Delivery, Transportation Research Part E, 2025.</li>
+<li>Zhang Y*, Oded Cats, Shadi Sharif Azadeh, Dynamic preference-based multi-modal trip planning, Transportation Research Part E, 2025.</li>
+<li>Zhang Y, Huang L et al., Data-Driven Optimization for Maritime Logistics, Transportation Research Part C, 2026.</li>
+</ul>
+<ul class="en hidden">
+<li>Zhang Y et al., Air-Ground Multimodal Transport Planning for Joint Passenger Mobility and Parcel Delivery, Transportation Research Part E, 2025.</li>
+<li>Zhang Y*, Oded Cats, Shadi Sharif Azadeh, Dynamic preference-based multi-modal trip planning, Transportation Research Part E, 2025.</li>
+<li>Zhang Y, Huang L et al., Data-Driven Optimization for Maritime Logistics, Transportation Research Part C, 2026.</li>
+</ul>
+</section>
+
+<section id="admissions">
+<h3 class="zh">招生信息</h3>
+<h3 class="en hidden">Admissions</h3>
+<p class="zh">硕士研究生每年若干名额，指导本科生项目，本科生与研究生招收信息见链接：<a href="https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb" target="_blank">招生信息</a></p>
+<p class="en hidden">Several Master student positions available each year. Undergraduate and graduate project guidance. Info: <a href="https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb" target="_blank">Admissions Info</a></p>
 </section>
 
 <section id="contact">
-  <h2 class="zh">联系方式</h2>
-  <h2 class="en hidden">Contact</h2>
-  <p class="zh">邮箱: yimeng.zhang@swjtu.edu.cn</p>
-  <p class="en hidden">Email: yimeng.zhang@swjtu.edu.cn</p>
-  <p class="zh">地址: 四川省成都市西南交通大学</p>
-  <p class="en hidden">Address: Southwest Jiaotong University, Chengdu, Sichuan, China</p>
+<h3 class="zh">联系方式</h3>
+<h3 class="en hidden">Contact</h3>
+<p class="zh">邮箱: yimengzhang [at] swjtu.edu.cn</p>
+<p class="en hidden">Email: yimengzhang [at] swjtu.edu.cn</p>
+<p class="zh">谷歌学术: <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=zh-CN" target="_blank">Google Scholar</a></p>
+<p class="en hidden">Google Scholar: <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=zh-CN" target="_blank">link</a></p>
 </section>
 
 <footer>
-  <p>© 2026 张一萌 / Yimeng Zhang</p>
+&copy; 2026 张义萌 / Yimeng Zhang
 </footer>
 
 <script>
-function showLang(lang) {
-  if(lang === 'zh') {
-    document.querySelectorAll('.zh').forEach(e=>e.classList.remove('hidden'));
-    document.querySelectorAll('.en').forEach(e=>e.classList.add('hidden'));
-  } else {
-    document.querySelectorAll('.zh').forEach(e=>e.classList.add('hidden'));
-    document.querySelectorAll('.en').forEach(e=>e.classList.remove('hidden'));
-  }
+function showLang(lang){
+    if(lang==='zh'){
+        document.querySelectorAll('.zh').forEach(e=>e.classList.remove('hidden'));
+        document.querySelectorAll('.en').forEach(e=>e.classList.add('hidden'));
+    }else{
+        document.querySelectorAll('.zh').forEach(e=>e.classList.add('hidden'));
+        document.querySelectorAll('.en').forEach(e=>e.classList.remove('hidden'));
+    }
+}
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 </script>
 
