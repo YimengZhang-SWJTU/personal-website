@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张一萌个人主页</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; }
+header { background-color:#004080; color:white; padding:20px; text-align:center; }
+nav { background-color:#f0f0f0; padding:10px; text-align:center; }
+nav button { margin:0 5px; padding:5px 10px; }
+section { padding:20px; max-width:900px; margin:auto; }
+h2 { color:#004080; }
+footer { background-color:#004080; color:white; text-align:center; padding:10px; margin-top:20px; }
+.hidden { display:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="name">张一萌 / Yimeng Zhang</h1>
+  <p id="title">教授 / Professor</p>
+</header>
+
+<nav>
+  <button onclick="showLang('zh')">中文</button>
+  <button onclick="showLang('en')">English</button>
+</nav>
+
+<section id="about">
+  <h2 class="zh">关于我</h2>
+  <h2 class="en hidden">About Me</h2>
+  <p class="zh">张一萌，四川西南交通大学教授，研究方向为单细胞转录组学、肿瘤生物学和计算生物学。</p>
+  <p class="en hidden">Yimeng Zhang, Professor at Southwest Jiaotong University. Research interests include single-cell transcriptomics, cancer biology, and computational biology.</p>
+</section>
+
+<section id="research">
+  <h2 class="zh">研究方向</h2>
+  <h2 class="en hidden">Research Interests</h2>
+  <ul class="zh">
+    <li>单细胞转录组分析</li>
+    <li>肿瘤微环境与免疫学</li>
+    <li>计算生物学方法开发</li>
+  </ul>
+  <ul class="en hidden">
+    <li>Single-cell transcriptomics</li>
+    <li>Tumor microenvironment and immunology</li>
+    <li>Computational biology method development</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2 class="zh">联系方式</h2>
+  <h2 class="en hidden">Contact</h2>
+  <p class="zh">邮箱: yimeng.zhang@swjtu.edu.cn</p>
+  <p class="en hidden">Email: yimeng.zhang@swjtu.edu.cn</p>
+  <p class="zh">地址: 四川省成都市西南交通大学</p>
+  <p class="en hidden">Address: Southwest Jiaotong University, Chengdu, Sichuan, China</p>
+</section>
+
+<footer>
+  <p>© 2026 张一萌 / Yimeng Zhang</p>
+</footer>
+
+<script>
+function showLang(lang) {
+  if(lang === 'zh') {
+    document.querySelectorAll('.zh').forEach(e=>e.classList.remove('hidden'));
+    document.querySelectorAll('.en').forEach(e=>e.classList.add('hidden'));
+  } else {
+    document.querySelectorAll('.zh').forEach(e=>e.classList.add('hidden'));
+    document.querySelectorAll('.en').forEach(e=>e.classList.remove('hidden'));
+  }
+}
+</script>
+
+</body>
+</html>
