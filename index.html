@@ -234,6 +234,7 @@
     }
 
     .section {
+      scroll-margin-top: 86px;
       padding: 0 0 34px;
       margin-bottom: 34px;
       border-bottom: 1px solid var(--line);
@@ -342,15 +343,29 @@
       font-size: 14px;
     }
 
-    .pub-list {
+    .pub-list,
+    .project-list {
       display: grid;
-      gap: 14px;
+      gap: 12px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
     }
 
-    .publication {
+    .pub-list {
+      counter-reset: publication;
+    }
+
+    .project-list {
+      counter-reset: project;
+    }
+
+    .publication,
+    .project-item {
+      position: relative;
       display: grid;
-      grid-template-columns: 188px minmax(0, 1fr);
-      gap: 17px;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 13px;
       padding: 14px;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -358,13 +373,46 @@
       box-shadow: 0 10px 24px rgba(26, 32, 39, 0.05);
     }
 
+    .publication {
+      counter-increment: publication;
+      grid-template-columns: 42px 148px minmax(0, 1fr);
+    }
+
+    .project-item {
+      counter-increment: project;
+    }
+
+    .publication::before,
+    .project-item::before {
+      width: 32px;
+      height: 32px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--accent-2);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .publication::before {
+      content: counter(publication);
+    }
+
+    .project-item::before {
+      content: counter(project);
+    }
+
     .pub-thumb {
       width: 100%;
-      aspect-ratio: 64 / 39;
-      object-fit: cover;
+      aspect-ratio: 3 / 4;
+      object-fit: contain;
+      display: block;
+      padding: 3px;
       border-radius: 6px;
       border: 1px solid var(--line);
-      background: #edf3f0;
+      background: #fff;
     }
 
     .pub-year {
@@ -395,6 +443,18 @@
       font-size: 14px;
     }
 
+    .project-item h3 {
+      margin: 0 0 5px;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .project-line {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     .pub-meta {
       display: flex;
       flex-wrap: wrap;
@@ -417,6 +477,33 @@
     }
 
     .pub-meta a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .project-meta span,
+    .project-meta a {
+      min-height: 26px;
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      background: #fbfcfc;
+    }
+
+    .project-meta a:hover {
       border-color: var(--accent);
       color: var(--accent);
       text-decoration: none;
@@ -470,7 +557,7 @@
       }
 
       .publication {
-        grid-template-columns: 170px minmax(0, 1fr);
+        grid-template-columns: 42px 138px minmax(0, 1fr);
       }
     }
 
@@ -493,8 +580,18 @@
       .sidebar,
       .simple-grid,
       .publication,
+      .project-item,
       .timeline-row {
         grid-template-columns: 1fr;
+      }
+
+      .publication::before,
+      .project-item::before {
+        justify-self: start;
+      }
+
+      .pub-thumb {
+        width: min(150px, 48vw);
       }
 
       .profile-links {
@@ -575,8 +672,8 @@
       <section class="facts" aria-label="Research facts">
         <h2>At a Glance</h2>
         <ul class="fact-list">
-          <li><strong>20+</strong><span>scholarly publications</span></li>
-          <li><strong>13</strong><span>first- or corresponding-author TR C/D/E papers</span></li>
+          <li><strong>29</strong><span>publications listed with full-text PDFs</span></li>
+          <li><strong>17</strong><span>first- or corresponding-author papers</span></li>
           <li><strong>574</strong><span>Google Scholar citations, h-index 11, May 2026 snapshot</span></li>
           <li><strong>8 + 2</strong><span>patents and software copyrights applied or granted</span></li>
         </ul>
@@ -670,169 +767,142 @@
       </section>
 
       <section class="section" id="publications">
-        <h2>Selected Publications</h2>
-        <p class="lead">Paper titles open the full-text PDF. The thumbnails are extracted from the papers to give a quick view of the research content.</p>
+        <h2>Publications</h2>
+        <p class="lead">Numbered from earliest to latest. Paper titles open the full-text PDF, and thumbnails are first-page screenshots from the PDFs.</p>
 
-        <div class="pub-list">
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/air-ground-multimodal-transport.jpg" alt="Air-ground multimodal transport planning figure">
+        <ol class="pub-list">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/semantic-ship-behaviour-ontology.jpg" alt="First page of semantic ship behaviour ontology paper">
             <div>
-              <span class="pub-year">2025</span>
-              <h3><a href="assets/papers/air-ground-multimodal-transport.pdf" target="_blank" rel="noopener">Air-Ground Multimodal Transport Planning for Joint Passenger Mobility and Parcel Delivery: Integration of Drones, Aircraft, and Ground Vehicles</a></h3>
-              <p><strong>Zhang Y.</strong> et al. <em>Transportation Research Part E: Logistics and Transportation Review</em>.</p>
+              <span class="pub-year">2018</span>
+              <h3><a href="assets/papers/semantic-ship-behaviour-ontology.pdf" target="_blank" rel="noopener">Semantic Model of Ship Behaviour Based on Ontology Engineering</a></h3>
+              <p><strong>Zhang Y.</strong>, Wen Y., Zhang F., Zhou C., Du L., Huang L., Xiao C. <em>The Journal of Engineering</em>, 2018(16): 1746-1752.</p>
               <div class="pub-meta">
-                <span>TR E</span>
-                <span>Air-ground logistics</span>
+                <a href="https://doi.org/10.1049/joe.2018.8329" target="_blank" rel="noopener">DOI</a>
+                <span>Ship behaviour</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-multimodal-drones-emergency-logistics.jpg" alt="Emergency logistics drone routing figure">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/ship-domain-modeling-ais.jpg" alt="First page of ship domain modeling paper">
             <div>
-              <span class="pub-year">2026</span>
-              <h3><a href="assets/papers/dynamic-multimodal-drones-emergency-logistics.pdf" target="_blank" rel="noopener">Dynamic Multimodal Transport Planning with Drones for Emergency Logistics: Mathematical Model and Heuristic Algorithm</a></h3>
-              <p><strong>Zhang Y.</strong>, Zhu S., Pu K., Cui H., Gan M., Liu X., Ai R. <em>Transportation Research Part E</em>, 206: 104558.</p>
+              <span class="pub-year">2018</span>
+              <h3><a href="assets/papers/ship-domain-modeling-ais.pdf" target="_blank" rel="noopener">Ship Domain Modeling Based on AIS Data (基于 AIS 数据的船舶领域建模)</a></h3>
+              <p>Wen Y., Wang Y., Zhang F., <strong>Zhang Y.</strong>, Huang L., Zhou C. <em>Navigation of China</em>, 41(4): 1-6.</p>
               <div class="pub-meta">
-                <span>TR E</span>
-                <span>Emergency logistics</span>
+                <span>Chinese article</span>
+                <span>AIS data</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/data-driven-maritime-logistics.jpg" alt="Maritime logistics analysis figure">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/semantic-modelling-ship-behavior-harbor.jpg" alt="First page of semantic ship behavior harbor paper">
             <div>
-              <span class="pub-year">2026</span>
-              <h3><a href="assets/papers/data-driven-maritime-logistics.pdf" target="_blank" rel="noopener">Data-Driven Optimization for Maritime Logistics: Integrating Transport Network Mining with Ship Fleet Routing</a></h3>
-              <p><strong>Zhang Y.</strong>, Huang L., Wang J., Lin H., Zhu S., Gan M., Liu X., Ai R. <em>Transportation Research Part C</em>, 183: 105451.</p>
+              <span class="pub-year">2019</span>
+              <h3><a href="assets/papers/semantic-modelling-ship-behavior-harbor.pdf" target="_blank" rel="noopener">Semantic Modelling of Ship Behavior in Harbor Based on Ontology and Dynamic Bayesian Network</a></h3>
+              <p>Wen Y., <strong>Zhang Y.</strong>, Huang L., Zhou C., Xiao C., Zhang F., Peng X., Zhan W., Sui Z. <em>ISPRS International Journal of Geo-Information</em>, 8(3): 107.</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.trc.2025.105451" target="_blank" rel="noopener">DOI</a>
-                <span>TR C</span>
-                <span>Maritime logistics</span>
+                <a href="https://doi.org/10.3390/ijgi8030107" target="_blank" rel="noopener">DOI</a>
+                <span>Maritime semantics</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-preference-multimodal-trip-planning.jpg" alt="Multimodal trip planning paper preview">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/autonomous-visual-perception-usv.jpg" alt="First page of autonomous visual perception paper">
             <div>
-              <span class="pub-year">2025</span>
-              <h3><a href="assets/papers/dynamic-preference-multimodal-trip-planning.pdf" target="_blank" rel="noopener">Dynamic Preference-Based Multi-Modal Trip Planning of Public Transport and Shared Mobility</a></h3>
-              <p><strong>Zhang Y.*</strong>, Cats O., Azadeh S. S. <em>Transportation Research Part E</em>, 202: 104286.</p>
+              <span class="pub-year">2019</span>
+              <h3><a href="assets/papers/autonomous-visual-perception-usv.pdf" target="_blank" rel="noopener">Autonomous Visual Perception for Unmanned Surface Vehicle Navigation in an Unknown Environment</a></h3>
+              <p>Zhan W., Xiao C., Wen Y., Zhou C., Yuan H., Xiu S., <strong>Zhang Y.</strong>, Zou X., Liu X., Li Q. <em>Sensors</em>, 19(10): 2216.</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.tre.2025.104286" target="_blank" rel="noopener">DOI</a>
-                <span>Shared mobility</span>
+                <a href="https://doi.org/10.3390/s19102216" target="_blank" rel="noopener">DOI</a>
+                <span>Unmanned surface vehicles</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-fleet-management-waterborne-vessels.jpg" alt="Waterborne fleet management figure">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/ship-behavior-dynamic-reasoning-semantics.jpg" alt="First page of ship behavior dynamic reasoning paper">
             <div>
-              <span class="pub-year">2025</span>
-              <h3><a href="assets/papers/dynamic-fleet-management-waterborne-vessels.pdf" target="_blank" rel="noopener">Dynamic Fleet Management of Waterborne Vessels with Mixed Passenger and Parcel Services</a></h3>
-              <p>Miyoshi H., <strong>Zhang Y.*</strong>, Azadeh S. S., Cats O. <em>npj Sustainable Mobility and Transport</em>, 2(1): 16.</p>
+              <span class="pub-year">2019</span>
+              <h3><a href="assets/papers/ship-behavior-dynamic-reasoning-semantics.pdf" target="_blank" rel="noopener">Mechanism of Ship Behavior Dynamic Reasoning Based on Semantics (基于语义的船舶行为动态推理机制)</a></h3>
+              <p>Wen Y., <strong>Zhang Y.</strong>, Huang L., Zhou C., Xiao C., Zhang F. <em>Navigation of China</em>, 42(3): 34-39.</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1038/s44333-025-00035-7" target="_blank" rel="noopener">DOI</a>
-                <span>Nature Portfolio</span>
+                <span>Chinese article</span>
+                <span>Dynamic reasoning</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/operational-synchromodal-review-roadmap.jpg" alt="Synchromodal review roadmap figure">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/automatic-ship-route-design.jpg" alt="First page of automatic ship route design paper">
             <div>
-              <span class="pub-year">2025</span>
-              <h3><a href="assets/papers/operational-synchromodal-review-roadmap.pdf" target="_blank" rel="noopener">Operational Synchromodal Transport Planning Methodologies: Review and Roadmap</a></h3>
-              <p><strong>Zhang Y.*</strong>, Tan X., Gan M., Liu X., Atasoy B. <em>Transportation Research Part E</em>, 194: 103915.</p>
+              <span class="pub-year">2020</span>
+              <h3><a href="assets/papers/automatic-ship-route-design.pdf" target="_blank" rel="noopener">Automatic Ship Route Design between Two Ports: A Data-Driven Method</a></h3>
+              <p>Wen Y., Sui Z., Zhou C., Xiao C., Chen Q., Han D., <strong>Zhang Y.</strong>. <em>Applied Ocean Research</em>, 96: 102049.</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.tre.2024.103915" target="_blank" rel="noopener">DOI</a>
-                <span>Review</span>
+                <a href="https://doi.org/10.1016/j.apor.2019.102049" target="_blank" rel="noopener">DOI</a>
+                <span>Ship routing</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/integrated-synchromodal-preference-learning.jpg" alt="Synchromodal preference learning framework">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/ship-exhaust-dispersion-simulation.jpg" alt="First page of ship exhaust dispersion simulation paper">
             <div>
-              <span class="pub-year">2025</span>
-              <h3><a href="assets/papers/integrated-synchromodal-preference-learning.pdf" target="_blank" rel="noopener">Integrated Synchromodal Transport Planning and Preference Learning</a></h3>
-              <p>He M., <strong>Zhang Y.*</strong>, Atasoy B. <em>Transportation Research Record</em>.</p>
+              <span class="pub-year">2020</span>
+              <h3><a href="assets/papers/ship-exhaust-dispersion-simulation.pdf" target="_blank" rel="noopener">Ship Exhaust Emission Dispersion Simulation Calculation Method (船舶废气排放扩散模拟计算方法研究)</a></h3>
+              <p>Peng X., Wen Y., Xiao C., Huang L., Zhou C., Zhang F., Yang T., <strong>Zhang Y.</strong>. <em>Journal of Safety and Environment</em>, 20(1): 255-264.</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1177/03611981241310399" target="_blank" rel="noopener">DOI</a>
-                <span>TRB Best Academic Paper Award</span>
+                <span>Chinese article</span>
+                <span>Ship emissions</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/augmented-lagrangian-global-synchromodal.jpg" alt="Global synchromodal optimization figure">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-ship-exhaust-emissions-ais.jpg" alt="First page of dynamic ship exhaust emissions paper">
             <div>
-              <span class="pub-year">2024</span>
-              <h3><a href="assets/papers/augmented-lagrangian-global-synchromodal.pdf" target="_blank" rel="noopener">Augmented Lagrangian Relaxation-Based Coordinated Approach for Global Synchromodal Transport Planning with Multiple Operators</a></h3>
-              <p>Guo W., <strong>Zhang Y.*</strong>, Li W., Negenborn R. R., Atasoy B. <em>Transportation Research Part E</em>, 185: 103535.</p>
+              <span class="pub-year">2020</span>
+              <h3><a href="assets/papers/dynamic-ship-exhaust-emissions-ais.pdf" target="_blank" rel="noopener">Dynamic Calculation of Ship Exhaust Emissions Based on Real-Time AIS Data</a></h3>
+              <p>Huang L., Wen Y., <strong>Zhang Y.</strong>, Zhou C., Zhang F., Yang T. <em>Transportation Research Part D: Transport and Environment</em>, 80: 102277.</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.tre.2024.103535" target="_blank" rel="noopener">DOI</a>
-                <span>Collaborative optimization</span>
+                <a href="https://doi.org/10.1016/j.trd.2020.102277" target="_blank" rel="noopener">DOI</a>
+                <span>TR D</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/synchromodal-replanning-rl.jpg" alt="Reinforcement learning synchromodal replanning figure">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/marine-oil-spill-emergency-materials.jpg" alt="First page of marine oil spill emergency materials paper">
             <div>
-              <span class="pub-year">2023</span>
-              <h3><a href="assets/papers/synchromodal-replanning-rl.pdf" target="_blank" rel="noopener">Synchromodal Freight Transport Re-Planning under Service Time Uncertainty: An Online Model-Assisted Reinforcement Learning</a></h3>
-              <p><strong>Zhang Y.*</strong>, Negenborn R. R., Atasoy B. <em>Transportation Research Part C</em>, 156: 104355.</p>
+              <span class="pub-year">2020</span>
+              <h3><a href="assets/papers/marine-oil-spill-emergency-materials.pdf" target="_blank" rel="noopener">Assessment of Emergency Material Accessibility for Marine Oil Spill (海上溢油应急物资可达能力研究)</a></h3>
+              <p>Peng X., Wen Y., Xiao C., Huang L., Zhou C., Zhang F., Yuan H., <strong>Zhang Y.</strong>. <em>Journal of Wuhan University of Technology (Transportation Science and Engineering)</em>, 44(1).</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.trc.2023.104355" target="_blank" rel="noopener">DOI</a>
-                <span>Reinforcement learning</span>
+                <span>Chinese article</span>
+                <span>Emergency response</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/synchromodal-vague-shipper-preferences.jpg" alt="Vague shipper preferences framework">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/pickup-delivery-transshipment-inland-waterway.jpg" alt="First page of inland waterway pickup and delivery paper">
             <div>
-              <span class="pub-year">2022</span>
-              <h3><a href="assets/papers/synchromodal-vague-shipper-preferences.pdf" target="_blank" rel="noopener">Synchromodal Transport Planning Considering Heterogeneous and Vague Preferences of Shippers</a></h3>
-              <p><strong>Zhang Y.*</strong>, Li X., van Hassel E., Negenborn R. R., Atasoy B. <em>Transportation Research Part E</em>, 164: 102827.</p>
+              <span class="pub-year">2020</span>
+              <h3><a href="assets/papers/pickup-delivery-transshipment-inland-waterway.pdf" target="_blank" rel="noopener">Pickup and Delivery Problem with Transshipment for Inland Waterway Transport</a></h3>
+              <p><strong>Zhang Y.</strong>, Atasoy B., Souravlias D., Negenborn R. R. <em>International Conference on Computational Logistics</em>, 18-35.</p>
               <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.tre.2022.102827" target="_blank" rel="noopener">DOI</a>
-                <span>Preference modelling</span>
+                <span>Conference paper</span>
+                <span>Inland waterways</span>
               </div>
             </div>
-          </article>
+          </li>
 
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/synchromodal-flexible-services.jpg" alt="Flexible synchromodal services figure">
-            <div>
-              <span class="pub-year">2022</span>
-              <h3><a href="assets/papers/synchromodal-flexible-services.pdf" target="_blank" rel="noopener">Synchromodal Transport Planning with Flexible Services: Mathematical Model and Heuristic Algorithm</a></h3>
-              <p><strong>Zhang Y.</strong>, Guo W., Negenborn R. R., Atasoy B. <em>Transportation Research Part C</em>, 140: 103711.</p>
-              <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.trc.2022.103711" target="_blank" rel="noopener">DOI</a>
-                <span>Flexible services</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/collaborative-intermodal-ecolabel.jpg" alt="Eco-label intermodal planning figure">
-            <div>
-              <span class="pub-year">2022</span>
-              <h3><a href="assets/papers/collaborative-intermodal-ecolabel.pdf" target="_blank" rel="noopener">Collaborative Planning for Intermodal Transport with Eco-Label Preferences</a></h3>
-              <p><strong>Zhang Y.*</strong>, Heinold A., Meisel F., Negenborn R. R., Atasoy B. <em>Transportation Research Part D</em>, 112: 103470.</p>
-              <div class="pub-meta">
-                <a href="https://doi.org/10.1016/j.trd.2022.103470" target="_blank" rel="noopener">DOI</a>
-                <span>Sustainable logistics</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication">
-            <img class="pub-thumb" src="assets/paper-thumbs/preference-based-alns-synchromodal.jpg" alt="Preference-based ALNS synchromodal network">
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/preference-based-alns-synchromodal.jpg" alt="First page of preference-based ALNS paper">
             <div>
               <span class="pub-year">2022</span>
               <h3><a href="assets/papers/preference-based-alns-synchromodal.pdf" target="_blank" rel="noopener">Preference-Based Multi-Objective Optimization for Synchromodal Transport Using Adaptive Large Neighborhood Search</a></h3>
@@ -842,24 +912,384 @@
                 <span>Multi-objective ALNS</span>
               </div>
             </div>
-          </article>
-        </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/synchromodal-flexible-services.jpg" alt="First page of flexible synchromodal services paper">
+            <div>
+              <span class="pub-year">2022</span>
+              <h3><a href="assets/papers/synchromodal-flexible-services.pdf" target="_blank" rel="noopener">Synchromodal Transport Planning with Flexible Services: Mathematical Model and Heuristic Algorithm</a></h3>
+              <p><strong>Zhang Y.</strong>, Guo W., Negenborn R. R., Atasoy B. <em>Transportation Research Part C: Emerging Technologies</em>, 140: 103711.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.trc.2022.103711" target="_blank" rel="noopener">DOI</a>
+                <span>TR C</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-synchromodal-uncertainty-rl.jpg" alt="First page of dynamic synchromodal transport planning workshop paper">
+            <div>
+              <span class="pub-year">2022</span>
+              <h3><a href="assets/papers/dynamic-synchromodal-uncertainty-rl.pdf" target="_blank" rel="noopener">Dynamic Synchromodal Transport Planning under Uncertainty: A Reinforcement Learning Approach</a></h3>
+              <p><strong>Zhang Y.</strong>, Negenborn R. R., Atasoy B. <em>INFORMS Transportation Science and Logistics Workshop</em>.</p>
+              <div class="pub-meta">
+                <span>Workshop paper</span>
+                <span>Reinforcement learning</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/synchromodal-vague-shipper-preferences.jpg" alt="First page of vague shipper preferences paper">
+            <div>
+              <span class="pub-year">2022</span>
+              <h3><a href="assets/papers/synchromodal-vague-shipper-preferences.pdf" target="_blank" rel="noopener">Synchromodal Transport Planning Considering Heterogeneous and Vague Preferences of Shippers</a></h3>
+              <p><strong>Zhang Y.*</strong>, Li X., van Hassel E., Negenborn R. R., Atasoy B. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 164: 102827.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.tre.2022.102827" target="_blank" rel="noopener">DOI</a>
+                <span>TR E</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/collaborative-intermodal-ecolabel.jpg" alt="First page of collaborative intermodal eco-label paper">
+            <div>
+              <span class="pub-year">2022</span>
+              <h3><a href="assets/papers/collaborative-intermodal-ecolabel.pdf" target="_blank" rel="noopener">Collaborative Planning for Intermodal Transport with Eco-Label Preferences</a></h3>
+              <p><strong>Zhang Y.*</strong>, Heinold A., Meisel F., Negenborn R. R., Atasoy B. <em>Transportation Research Part D: Transport and Environment</em>, 112: 103470.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.trd.2022.103470" target="_blank" rel="noopener">DOI</a>
+                <span>TR D</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/synchromodal-replanning-rl.jpg" alt="First page of synchromodal re-planning paper">
+            <div>
+              <span class="pub-year">2023</span>
+              <h3><a href="assets/papers/synchromodal-replanning-rl.pdf" target="_blank" rel="noopener">Synchromodal Freight Transport Re-Planning under Service Time Uncertainty: An Online Model-Assisted Reinforcement Learning</a></h3>
+              <p><strong>Zhang Y.*</strong>, Negenborn R. R., Atasoy B. <em>Transportation Research Part C: Emerging Technologies</em>, 156: 104355.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.trc.2023.104355" target="_blank" rel="noopener">DOI</a>
+                <span>TR C</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/augmented-lagrangian-global-synchromodal.jpg" alt="First page of augmented Lagrangian synchromodal paper">
+            <div>
+              <span class="pub-year">2024</span>
+              <h3><a href="assets/papers/augmented-lagrangian-global-synchromodal.pdf" target="_blank" rel="noopener">Augmented Lagrangian Relaxation-Based Coordinated Approach for Global Synchromodal Transport Planning with Multiple Operators</a></h3>
+              <p>Guo W., <strong>Zhang Y.*</strong>, Li W., Negenborn R. R., Atasoy B. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 185: 103535.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.tre.2024.103535" target="_blank" rel="noopener">DOI</a>
+                <span>TR E</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/operational-synchromodal-review-roadmap.jpg" alt="First page of operational synchromodal review paper">
+            <div>
+              <span class="pub-year">2025</span>
+              <h3><a href="assets/papers/operational-synchromodal-review-roadmap.pdf" target="_blank" rel="noopener">Operational Synchromodal Transport Planning Methodologies: Review and Roadmap</a></h3>
+              <p><strong>Zhang Y.*</strong>, Tan X., Gan M., Liu X., Atasoy B. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 194: 103915.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.tre.2024.103915" target="_blank" rel="noopener">DOI</a>
+                <span>Review</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/integrated-synchromodal-preference-learning.jpg" alt="First page of integrated synchromodal preference learning paper">
+            <div>
+              <span class="pub-year">2025</span>
+              <h3><a href="assets/papers/integrated-synchromodal-preference-learning.pdf" target="_blank" rel="noopener">Integrated Synchromodal Transport Planning and Preference Learning</a></h3>
+              <p>He M., <strong>Zhang Y.*</strong>, Atasoy B. <em>Transportation Research Record</em>, 2679(5): 562-582.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1177/03611981241310399" target="_blank" rel="noopener">DOI</a>
+                <span>TRB Best Academic Paper Award</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-fleet-management-waterborne-vessels.jpg" alt="First page of waterborne vessel fleet management paper">
+            <div>
+              <span class="pub-year">2025</span>
+              <h3><a href="assets/papers/dynamic-fleet-management-waterborne-vessels.pdf" target="_blank" rel="noopener">Dynamic Fleet Management of Waterborne Vessels with Mixed Passenger and Parcel Services</a></h3>
+              <p>Miyoshi H., <strong>Zhang Y.*</strong>, Azadeh S. S., Cats O. <em>npj Sustainable Mobility and Transport</em>, 2(1): 16.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1038/s44333-025-00035-7" target="_blank" rel="noopener">DOI</a>
+                <span>Nature Portfolio</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-preference-multimodal-trip-planning.jpg" alt="First page of dynamic preference multimodal trip planning paper">
+            <div>
+              <span class="pub-year">2025</span>
+              <h3><a href="assets/papers/dynamic-preference-multimodal-trip-planning.pdf" target="_blank" rel="noopener">Dynamic Preference-Based Multi-Modal Trip Planning of Public Transport and Shared Mobility</a></h3>
+              <p><strong>Zhang Y.*</strong>, Cats O., Azadeh S. S. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 202: 104286.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.tre.2025.104286" target="_blank" rel="noopener">DOI</a>
+                <span>Shared mobility</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/resilient-synchromodal-hybrid-simulation.jpg" alt="First page of resilient synchromodal transport paper">
+            <div>
+              <span class="pub-year">2025</span>
+              <h3><a href="assets/papers/resilient-synchromodal-hybrid-simulation.pdf" target="_blank" rel="noopener">Resilient Synchromodal Transport through Learning Assisted Hybrid Simulation Optimization Model</a></h3>
+              <p>Dewantara S., Filom S., Razavi S., Atasoy B., <strong>Zhang Y.</strong>, Saeednia M. <em>Transportation Research Part C: Emerging Technologies</em>, 181: 105366.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.trc.2025.105366" target="_blank" rel="noopener">DOI</a>
+                <span>Resilience</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/low-altitude-aircraft-operations-review.jpg" alt="First page of low-altitude aircraft operations review">
+            <div>
+              <span class="pub-year">2025</span>
+              <h3><a href="assets/papers/low-altitude-aircraft-operations-review.pdf" target="_blank" rel="noopener">A Review of Optimization Methods for Low-Altitude Aircraft Operations (低空飞行器运行优化决策方法综述与展望)</a></h3>
+              <p>Fan W., Xiao J., Wu Y., <strong>Zhang Y.*</strong>, Yang C., Gan M., Liu X. <em>Journal of Transportation Engineering and Information</em>, 23(3): 3-25.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.19961/j.cnki.1672-4747.2025.06.044" target="_blank" rel="noopener">DOI</a>
+                <span>Low-altitude economy</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/dynamic-multimodal-drones-emergency-logistics.jpg" alt="First page of dynamic multimodal drone emergency logistics paper">
+            <div>
+              <span class="pub-year">2026</span>
+              <h3><a href="assets/papers/dynamic-multimodal-drones-emergency-logistics.pdf" target="_blank" rel="noopener">Dynamic Multimodal Transport Planning with Drones for Emergency Logistics: Mathematical Model and Heuristic Algorithm</a></h3>
+              <p><strong>Zhang Y.</strong>, Zhu S., Pu K., Cui H., Gan M., Liu X., Ai R. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 206: 104558.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.tre.2025.104558" target="_blank" rel="noopener">DOI</a>
+                <span>Emergency logistics</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/data-driven-maritime-logistics.jpg" alt="First page of data-driven maritime logistics paper">
+            <div>
+              <span class="pub-year">2026</span>
+              <h3><a href="assets/papers/data-driven-maritime-logistics.pdf" target="_blank" rel="noopener">Data-Driven Optimization for Maritime Logistics: Integrating Transport Network Mining with Ship Fleet Routing</a></h3>
+              <p><strong>Zhang Y.</strong>, Huang L., Wang J., Lin H., Zhu S., Gan M., Liu X., Ai R. <em>Transportation Research Part C: Emerging Technologies</em>, 183: 105451.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.trc.2025.105451" target="_blank" rel="noopener">DOI</a>
+                <span>Maritime logistics</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/priority-multitask-scheduling-micromobility.jpg" alt="First page of priority-based multi-task scheduling paper">
+            <div>
+              <span class="pub-year">2026</span>
+              <h3><a href="assets/papers/priority-multitask-scheduling-micromobility.pdf" target="_blank" rel="noopener">Priority-Based Multi-Task Scheduling for Shared Micro-Mobility Systems</a></h3>
+              <p><strong>Zhang Y.</strong>, Zhu S., Chen Y., Li P., Feng J., Li R., Liu X., Gan M., Yang S., Chen N., Ai R. <em>Transportation Research Part C: Emerging Technologies</em>, 190: 105796.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.trc.2026.105796" target="_blank" rel="noopener">DOI</a>
+                <span>Shared micro-mobility</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/air-ground-multimodal-transport.jpg" alt="First page of air-ground multimodal transport paper">
+            <div>
+              <span class="pub-year">2026</span>
+              <h3><a href="assets/papers/air-ground-multimodal-transport.pdf" target="_blank" rel="noopener">Air-Ground Multimodal Transport Planning for Joint Passenger Mobility and Parcel Delivery: Integration of Drones, Aircraft, and Ground Vehicles</a></h3>
+              <p><strong>Zhang Y.</strong>, Yang C., Xi H., Peng S., Yang J., Gan M., Liu X., Ai R. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 210: 104825.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.1016/j.tre.2026.104825" target="_blank" rel="noopener">DOI</a>
+                <span>Air-ground logistics</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/spatiotemporal-traffic-demand-graph-features.jpg" alt="First page of spatiotemporal traffic demand graph features paper">
+            <div>
+              <span class="pub-year">2026</span>
+              <h3><a href="assets/papers/spatiotemporal-traffic-demand-graph-features.pdf" target="_blank" rel="noopener">Integrated Prediction Model of Spatiotemporal Traffic Demand Considering Graph Features (考虑图特征的时空交通需求集成预测模型)</a></h3>
+              <p>You X., Gan M., <strong>Zhang Y.</strong>, Cai X., Cheng J. <em>Journal of Transportation Engineering and Information</em>, online first.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.19961/j.cnki.1672-4747.2025.12.010" target="_blank" rel="noopener">DOI</a>
+                <span>Traffic demand prediction</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="publication">
+            <img class="pub-thumb" src="assets/paper-thumbs/intermodal-coopetition-review.jpg" alt="First page of intermodal coopetition review paper">
+            <div>
+              <span class="pub-year">2026</span>
+              <h3><a href="assets/papers/intermodal-coopetition-review.pdf" target="_blank" rel="noopener">Review of Intermodal Transport Coopetition Methods with Multi-Agent Participation (面向多主体参与的多式联运竞合方法研究综述)</a></h3>
+              <p>Gan M., Tan X., Luo X., <strong>Zhang Y.</strong>, Zhu S., Ding W., Liu X., Ma L. <em>Journal of Transportation Engineering and Information</em>, online first.</p>
+              <div class="pub-meta">
+                <a href="https://doi.org/10.19961/j.cnki.1672-4747.2026.01.015" target="_blank" rel="noopener">DOI</a>
+                <span>Intermodal coopetition</span>
+              </div>
+            </div>
+          </li>
+        </ol>
 
         <p class="note">For the most current citation record, please see <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
       </section>
 
       <section class="section" id="projects">
         <h2>Funding and Projects</h2>
-        <div class="simple-grid">
-          <article class="text-card">
-            <h3>Principal Investigator</h3>
-            <p>NSFC Youth Project, Sichuan Tianfu Emei Program Young Talent Project, Sichuan Natural Science Foundation Youth Project, Hebei Chunhui Talent Project, and Fundamental Research Funds for the Central Universities.</p>
-          </article>
-          <article class="text-card">
-            <h3>Collaborative Projects</h3>
-            <p>Contributions to European and Chinese projects on public transport, inland waterway freight, predictive synchromodality, railway logistics, and intelligent operation of large-scale freight hubs.</p>
-          </article>
-        </div>
+        <ol class="project-list">
+          <li class="project-item">
+            <div>
+              <h3>Dynamic Collaborative Optimization of Intermodal Transport Planning under Time Uncertainty across Rail-Road-Water Networks</h3>
+              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
+              <div class="project-meta">
+                <span>National Natural Science Foundation of China Youth Project</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Intelligent Transport Organization Optimization for Intermodal Transport</h3>
+              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
+              <div class="project-meta">
+                <span>Sichuan Tianfu Emei Young Talent Program</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Smart Operation Organization for Railway Freight Hubs under Rail-Road-Water Coordination</h3>
+              <p class="project-line">Role: Principal Investigator. Period: 2026.01 - 2028.12.</p>
+              <div class="project-meta">
+                <span>National Key R&amp;D Program sub-project</span>
+                <span>Large railway freight hub intelligent operation technology</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Multimodal Railway Transport Operation Organization and Optimization for the Whole Logistics Chain</h3>
+              <p class="project-line">Role: Principal Investigator. Period: 2026.01 - 2029.12.</p>
+              <div class="project-meta">
+                <span>NSFC Joint Fund Key Project topic</span>
+                <span>Railway logistics cost reduction and efficiency improvement</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Multi-Agent Collaborative Transport Organization on Stochastic Time-Varying Intermodal Networks in Sichuan's Four Directions and Eight Corridors</h3>
+              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2026.12.</p>
+              <div class="project-meta">
+                <span>Sichuan Natural Science Foundation Youth Project</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Dynamic Optimization of Tangshan Port Intermodal Transport Planning under Rail-Road-Water Network Time Uncertainty</h3>
+              <p class="project-line">Role: Principal Investigator. Period: 2024.01 - 2026.12.</p>
+              <div class="project-meta">
+                <span>Hebei Natural Science Foundation Youth Project</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Multi-Decision-Maker Multi-Objective Distributed Collaborative Optimization for Intermodal Transport</h3>
+              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
+              <div class="project-meta">
+                <span>Fundamental Research Funds for the Central Universities</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Theories and Methods for Railway Logistics Cost Reduction and Efficiency Improvement</h3>
+              <p class="project-line">Role: Participant. Period: 2026.01 - 2029.12. Project lead: Xiaobo Liu.</p>
+              <div class="project-meta">
+                <span>NSFC Joint Fund Key Project</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Seamless Shared Urban Mobility</h3>
+              <p class="project-line">Role: Participant. Period: 2023.06 - 2026.06. Project lead: Oded Cats.</p>
+              <div class="project-meta">
+                <span>European Horizon 2020</span>
+                <a href="https://sum-project.eu" target="_blank" rel="noopener">Website</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Novel Inland Waterway Transport Concepts for Moving Freight Effectively</h3>
+              <p class="project-line">Role: Participant. Period: 2020.01 - 2024.07. Project lead: Rudy R. Negenborn.</p>
+              <div class="project-meta">
+                <span>European Horizon 2020</span>
+                <a href="https://novimove.eu/" target="_blank" rel="noopener">Website</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Complexity Methods for Predictive Synchromodality</h3>
+              <p class="project-line">Role: Participant. Period: 2019.09 - 2022.09. Project lead: R. D. van der Mei.</p>
+              <div class="project-meta">
+                <span>Dutch Research Council (NWO)</span>
+                <a href="https://www.nwo.nl/en/projects/43916120" target="_blank" rel="noopener">Website</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Key Technologies for Resilience Improvement of Road-Rail Transport Corridors in the Chengdu-Chongqing Economic Circle</h3>
+              <p class="project-line">Role: Participant. Period: 2025.01 - 2027.12. Project lead: Xiaobo Liu.</p>
+              <div class="project-meta">
+                <span>Sichuan Science and Technology Program "Pianji" Project</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item">
+            <div>
+              <h3>Semantic Spatial Modeling of Port Water Traffic Situation</h3>
+              <p class="project-line">Role: Participant. Period: 2017.01 - 2020.12. Project lead: Yuanqiao Wen.</p>
+              <div class="project-meta">
+                <span>National Natural Science Foundation of China General Program</span>
+              </div>
+            </div>
+          </li>
+        </ol>
       </section>
 
       <section class="section" id="honors">
