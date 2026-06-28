@@ -402,6 +402,28 @@
       background: #fff;
     }
 
+    .pub-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: 6px;
+      padding: 14px;
+      border-radius: 6px;
+      border: 1px dashed var(--line);
+      background: #fbfcfc;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .pub-placeholder strong {
+      color: var(--accent-2);
+      font-size: 14px;
+    }
+
     .pub-year {
       display: inline-flex;
       margin-bottom: 5px;
@@ -577,7 +599,8 @@
         justify-self: start;
       }
 
-      .pub-thumb {
+      .pub-thumb,
+      .pub-placeholder {
         width: min(150px, 48vw);
       }
 
@@ -659,7 +682,7 @@
       <section class="facts" aria-label="Research facts">
         <h2>At a Glance</h2>
         <ul class="fact-list">
-          <li><strong>29</strong><span>publications listed with full-text PDFs</span></li>
+          <li><strong>30</strong><span>publications listed</span></li>
           <li><strong>17</strong><span>first- or corresponding-author papers</span></li>
           <li><strong>574</strong><span>Google Scholar citations, h-index 11, May 2026 snapshot</span></li>
           <li><strong>8 + 2</strong><span>patents and software copyrights applied or granted</span></li>
@@ -755,9 +778,26 @@
 
       <section class="section" id="publications">
         <h2>Publications</h2>
-        <p class="lead">Displayed latest first. Numbers follow chronological order from earliest to latest, and paper titles open the full-text PDF.</p>
+        <p class="lead">Displayed latest first. Numbers follow chronological order from earliest to latest. When available, paper titles open the full-text PDF.</p>
 
         <ol class="pub-list">
+          <li class="publication" data-number="30">
+            <div class="pub-placeholder" aria-label="Full text pending">
+              <strong>TR E</strong>
+              <span>Full text pending</span>
+            </div>
+            <div>
+              <span class="pub-year">2026</span>
+              <h3>Model-Assisted Multi-Agent Reinforcement Learning for Collaborative Synchromodal Transport Re-Planning under Service Time Uncertainty</h3>
+              <p>Luo X., <strong>Zhang Y.</strong>, Gan M., Liu X., Atasoy B. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 2026.</p>
+              <div class="pub-meta">
+                <span>TR E</span>
+                <span>Multi-agent reinforcement learning</span>
+                <span>Full text pending</span>
+              </div>
+            </div>
+          </li>
+
           <li class="publication" data-number="29">
             <img class="pub-thumb" src="assets/paper-thumbs/intermodal-coopetition-review.jpg" alt="First page of intermodal coopetition review paper">
             <div>
