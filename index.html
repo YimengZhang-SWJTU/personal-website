@@ -37,6 +37,10 @@
       letter-spacing: 0;
     }
 
+    html[lang="zh-CN"] body {
+      font-family: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
     a {
       color: var(--accent);
       text-decoration: none;
@@ -108,6 +112,41 @@
       background: #eef5f2;
       color: var(--accent);
       text-decoration: none;
+    }
+
+    .topbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fbfcfc;
+    }
+
+    .lang-switch button {
+      min-width: 42px;
+      min-height: 28px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .lang-switch button[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
     }
 
     .page {
@@ -581,6 +620,11 @@
         justify-content: flex-start;
       }
 
+      .topbar-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
       .page {
         padding: 24px 18px 54px;
         gap: 24px;
@@ -646,18 +690,24 @@
     <div class="topbar-inner">
       <a class="brand" href="#top" aria-label="Yimeng Zhang homepage">
         <span class="brand-mark">YZ</span>
-        <span>Yimeng Zhang</span>
+        <span data-i18n="brand.name">Yimeng Zhang</span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#appointments">Appointments</a>
-        <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
-        <a href="#honors">Honors</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="topbar-actions">
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#research" data-i18n="nav.research">Research</a>
+          <a href="#appointments" data-i18n="nav.appointments">Appointments</a>
+          <a href="#publications" data-i18n="nav.publications">Publications</a>
+          <a href="#projects" data-i18n="nav.projects">Projects</a>
+          <a href="#honors" data-i18n="nav.honors">Honors</a>
+          <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+        <div class="lang-switch" aria-label="Language">
+          <button type="button" data-lang-button="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang-button="zh" aria-pressed="false">中文</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -665,14 +715,14 @@
     <aside class="sidebar" aria-label="Profile sidebar">
       <section class="profile">
         <img class="portrait" src="assets/images/yimeng-zhang.png" alt="Portrait of Yimeng Zhang">
-        <h1>Yimeng Zhang</h1>
-        <p class="role">Associate Professor</p>
-        <p>School of Transportation and Logistics<br>Southwest Jiaotong University</p>
-        <p>Master's Supervisor</p>
-        <p>Chengdu, China</p>
+        <h1 data-i18n="profile.name">Yimeng Zhang</h1>
+        <p class="role" data-i18n="profile.role">Associate Professor</p>
+        <p data-i18n="profile.affiliation">School of Transportation and Logistics<br>Southwest Jiaotong University</p>
+        <p data-i18n="profile.supervisor">Master's Supervisor</p>
+        <p data-i18n="profile.location">Chengdu, China</p>
         <p>yimengzhang@swjtu.edu.cn</p>
         <div class="profile-links">
-          <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+          <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en" target="_blank" rel="noopener" data-i18n="profile.scholar">Scholar</a>
           <a href="https://orcid.org/0000-0002-6885-5449" target="_blank" rel="noopener">ORCID</a>
           <a href="https://www.researchgate.net/profile/Yimeng-Zhang-11" target="_blank" rel="noopener">ResearchGate</a>
           <a href="https://faculty.swjtu.edu.cn/zhangyimeng/zh_CN/index.htm" target="_blank" rel="noopener">SWJTU</a>
@@ -680,120 +730,121 @@
       </section>
 
       <section class="facts" aria-label="Research facts">
-        <h2>At a Glance</h2>
+        <h2 data-i18n="facts.heading">At a Glance</h2>
         <ul class="fact-list">
-          <li><strong>30</strong><span>publications listed</span></li>
-          <li><strong>17</strong><span>first- or corresponding-author papers</span></li>
-          <li><strong>574</strong><span>Google Scholar citations, h-index 11, May 2026 snapshot</span></li>
-          <li><strong>8 + 2</strong><span>patents and software copyrights applied or granted</span></li>
+          <li><strong>30</strong><span data-i18n="facts.publications">publications listed</span></li>
+          <li><strong>20</strong><span data-i18n="facts.first">first- or corresponding-author papers</span></li>
+          <li><strong>574</strong><span data-i18n="facts.citations">Google Scholar citations, h-index 11, May 2026 snapshot</span></li>
+          <li><strong>8 + 2</strong><span data-i18n="facts.ip">patents and software copyrights applied or granted</span></li>
         </ul>
       </section>
     </aside>
 
     <main class="content">
       <section class="section compact" id="about">
-        <h2>About</h2>
-        <p class="lead">
+        <h2 data-i18n="about.heading">About</h2>
+        <p class="lead" data-i18n="about.lead">
           I work on AI-driven optimization for multimodal, synchromodal, and maritime transport systems.
         </p>
-        <p>
+        <p data-i18n="about.body1">
           My research develops operations research, data mining, reinforcement learning, and preference-learning methods for dynamic and collaborative transport planning. Applications include rail-water-road freight networks, public transport and shared mobility, maritime logistics, port operations, and low-altitude air-ground logistics.
         </p>
-        <p>
+        <p data-i18n="about.body2">
           I received my Ph.D. from Delft University of Technology under Prof. Rudy R. Negenborn and Dr. Bilge Atasoy, and later worked with Prof. Oded Cats and Dr. Shadi Sharif Azadeh on sustainable multimodal passenger transport.
         </p>
         <div class="tags" aria-label="Research keywords">
-          <span class="tag">Operations research</span>
-          <span class="tag">Reinforcement learning</span>
-          <span class="tag">Synchromodal freight</span>
-          <span class="tag">Maritime logistics</span>
-          <span class="tag">Shared mobility</span>
-          <span class="tag">Vehicle routing</span>
-          <span class="tag">Preference learning</span>
+          <span class="tag" data-i18n="tag.or">Operations research</span>
+          <span class="tag" data-i18n="tag.rl">Reinforcement learning</span>
+          <span class="tag" data-i18n="tag.synchromodal">Synchromodal freight</span>
+          <span class="tag" data-i18n="tag.maritime">Maritime logistics</span>
+          <span class="tag" data-i18n="tag.shared">Shared mobility</span>
+          <span class="tag" data-i18n="tag.routing">Vehicle routing</span>
+          <span class="tag" data-i18n="tag.preference">Preference learning</span>
         </div>
       </section>
 
       <section class="section" id="research">
-        <h2>Research Interests</h2>
+        <h2 data-i18n="research.heading">Research Interests</h2>
         <div class="simple-grid">
           <article class="text-card">
-            <h3>Dynamic multimodal transport planning</h3>
-            <p>Decision models for rail-water-road networks, low-altitude logistics, public transport, and shared mobility under stochastic travel times, demand, and capacity.</p>
+            <h3 data-i18n="research.card1.title">Dynamic multimodal transport planning</h3>
+            <p data-i18n="research.card1.body">Decision models for rail-water-road networks, low-altitude logistics, public transport, and shared mobility under stochastic travel times, demand, and capacity.</p>
           </article>
           <article class="text-card">
-            <h3>Learning-assisted optimization</h3>
-            <p>Hybrid reinforcement learning, adaptive large neighborhood search, multi-agent control, stochastic optimization, and preference learning for real-time decisions.</p>
+            <h3 data-i18n="research.card2.title">Learning-assisted optimization</h3>
+            <p data-i18n="research.card2.body">Hybrid reinforcement learning, adaptive large neighborhood search, multi-agent control, stochastic optimization, and preference learning for real-time decisions.</p>
           </article>
           <article class="text-card">
-            <h3>Maritime and port logistics</h3>
-            <p>AIS-based data mining, fleet routing, ship emissions, berth allocation, collaborative port optimization, and semantic modelling of ship behavior.</p>
+            <h3 data-i18n="research.card3.title">Maritime and port logistics</h3>
+            <p data-i18n="research.card3.body">AIS-based data mining, fleet routing, ship emissions, berth allocation, collaborative port optimization, and semantic modelling of ship behavior.</p>
           </article>
           <article class="text-card">
-            <h3>Sustainable and collaborative systems</h3>
-            <p>Planning methods that coordinate operators, terminals, shippers, passengers, and public agencies while balancing cost, time, emissions, and service quality.</p>
+            <h3 data-i18n="research.card4.title">Sustainable and collaborative systems</h3>
+            <p data-i18n="research.card4.body">Planning methods that coordinate operators, terminals, shippers, passengers, and public agencies while balancing cost, time, emissions, and service quality.</p>
           </article>
         </div>
       </section>
 
       <section class="section" id="appointments">
-        <h2>Appointments and Education</h2>
+        <h2 data-i18n="appointments.heading">Appointments and Education</h2>
         <div class="timeline">
           <div class="timeline-row">
             <div class="date">2025.09 - Present</div>
             <div>
-              <h3>Associate Professor, Southwest Jiaotong University</h3>
-              <p>School of Transportation and Logistics. Research and supervision in multimodal transport optimization and AI-driven logistics.</p>
+              <h3 data-i18n="appointments.associate.title">Associate Professor, Southwest Jiaotong University</h3>
+              <p data-i18n="appointments.associate.body">School of Transportation and Logistics. Research and supervision in multimodal transport optimization and AI-driven logistics.</p>
             </div>
           </div>
           <div class="timeline-row">
             <div class="date">2024.01 - 2024.08</div>
             <div>
-              <h3>Assistant Professor, Southwest Jiaotong University</h3>
-              <p>School of Transportation and Logistics.</p>
+              <h3 data-i18n="appointments.assistant.title">Assistant Professor, Southwest Jiaotong University</h3>
+              <p data-i18n="appointments.assistant.body">School of Transportation and Logistics.</p>
             </div>
           </div>
           <div class="timeline-row">
             <div class="date">2023.07 - 2025.07</div>
             <div>
-              <h3>Postdoctoral Researcher / Collaborator, Delft University of Technology</h3>
-              <p>Research on sustainable multimodal passenger transport and shared mobility with Prof. Oded Cats and Dr. Shadi Sharif Azadeh.</p>
+              <h3 data-i18n="appointments.postdoc.title">Postdoctoral Researcher / Collaborator, Delft University of Technology</h3>
+              <p data-i18n="appointments.postdoc.body">Research on sustainable multimodal passenger transport and shared mobility with Prof. Oded Cats and Dr. Shadi Sharif Azadeh.</p>
             </div>
           </div>
           <div class="timeline-row">
             <div class="date">2019.09 - 2023.06</div>
             <div>
-              <h3>Ph.D., Delft University of Technology</h3>
-              <p>Transportation Engineering and Logistics. Dissertation: <a href="assets/files/Yimeng_Zhang_PhD_Thesis.pdf">Flexible, Dynamic, and Collaborative Synchromodal Transport Planning Considering Preferences</a>.</p>
+              <h3 data-i18n="appointments.phd.title">Ph.D., Delft University of Technology</h3>
+              <p data-i18n="appointments.phd.body">Transportation Engineering and Logistics. Dissertation: <a href="assets/files/Yimeng_Zhang_PhD_Thesis.pdf">Flexible, Dynamic, and Collaborative Synchromodal Transport Planning Considering Preferences</a>.</p>
             </div>
           </div>
           <div class="timeline-row">
             <div class="date">2012.09 - 2019.06</div>
             <div>
-              <h3>Wuhan University of Technology</h3>
-              <p>M.Eng. in Transport Information Engineering and Control; B.Eng. in Navigation Technology / Transport Planning.</p>
+              <h3 data-i18n="appointments.whut.title">Wuhan University of Technology</h3>
+              <p data-i18n="appointments.whut.body">M.Eng. in Transport Information Engineering and Control; B.Eng. in Navigation Technology / Transport Planning.</p>
             </div>
           </div>
         </div>
       </section>
 
       <section class="section" id="publications">
-        <h2>Publications</h2>
-        <p class="lead">Displayed latest first. Numbers follow chronological order from earliest to latest. When available, paper titles open the full-text PDF.</p>
+        <h2 data-i18n="publications.heading">Publications</h2>
+        <p class="lead" data-i18n="publications.lead">Displayed latest first. Numbers follow chronological order from earliest to latest. When available, paper titles open the full-text PDF.</p>
+        <p class="note" data-i18n="publications.authorNote">* Corresponding author.</p>
 
         <ol class="pub-list">
           <li class="publication" data-number="30">
             <div class="pub-placeholder" aria-label="Full text pending">
               <strong>TR E</strong>
-              <span>Full text pending</span>
+              <span data-i18n="publications.pending">Full text pending</span>
             </div>
             <div>
               <span class="pub-year">2026</span>
               <h3>Model-Assisted Multi-Agent Reinforcement Learning for Collaborative Synchromodal Transport Re-Planning under Service Time Uncertainty</h3>
-              <p>Luo X., <strong>Zhang Y.</strong>, Gan M., Liu X., Atasoy B. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 2026.</p>
+              <p>Luo X., <strong>Zhang Y.*</strong>, Gan M., Liu X., Atasoy B. <em>Transportation Research Part E: Logistics and Transportation Review</em>, 2026.</p>
               <div class="pub-meta">
                 <span>TR E</span>
                 <span>Multi-agent reinforcement learning</span>
-                <span>Full text pending</span>
+                <span data-i18n="publications.pending">Full text pending</span>
               </div>
             </div>
           </li>
@@ -1076,7 +1127,7 @@
             <div>
               <span class="pub-year">2020</span>
               <h3><a href="assets/papers/dynamic-ship-exhaust-emissions-ais.pdf" target="_blank" rel="noopener">Dynamic Calculation of Ship Exhaust Emissions Based on Real-Time AIS Data</a></h3>
-              <p>Huang L., Wen Y., <strong>Zhang Y.</strong>, Zhou C., Zhang F., Yang T. <em>Transportation Research Part D: Transport and Environment</em>, 80: 102277.</p>
+              <p>Huang L., Wen Y., <strong>Zhang Y.*</strong>, Zhou C., Zhang F., Yang T. <em>Transportation Research Part D: Transport and Environment</em>, 80: 102277.</p>
               <div class="pub-meta">
                 <a href="https://doi.org/10.1016/j.trd.2020.102277" target="_blank" rel="noopener">DOI</a>
                 <span>TR D</span>
@@ -1167,7 +1218,7 @@
             <div>
               <span class="pub-year">2018</span>
               <h3><a href="assets/papers/semantic-ship-behaviour-ontology.pdf" target="_blank" rel="noopener">Semantic Model of Ship Behaviour Based on Ontology Engineering</a></h3>
-              <p><strong>Zhang Y.</strong>, Wen Y., Zhang F., Zhou C., Du L., Huang L., Xiao C. <em>The Journal of Engineering</em>, 2018(16): 1746-1752.</p>
+              <p><strong>Zhang Y.*</strong>, Wen Y., Zhang F., Zhou C., Du L., Huang L., Xiao C. <em>The Journal of Engineering</em>, 2018(16): 1746-1752.</p>
               <div class="pub-meta">
                 <a href="https://doi.org/10.1049/joe.2018.8329" target="_blank" rel="noopener">DOI</a>
                 <span>Ship behaviour</span>
@@ -1176,143 +1227,143 @@
           </li>
         </ol>
 
-        <p class="note">For the most current citation record, please see <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+        <p class="note" data-i18n="publications.scholarNote">For the most current citation record, please see <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
       </section>
 
       <section class="section" id="projects">
-        <h2>Funding and Projects</h2>
+        <h2 data-i18n="projects.heading">Funding and Projects</h2>
         <ol class="project-list">
           <li class="project-item" data-number="13">
             <div>
-              <h3>Theories and Methods for Railway Logistics Cost Reduction and Efficiency Improvement</h3>
-              <p class="project-line">Role: Participant. Period: 2026.01 - 2029.12.</p>
+              <h3 data-i18n="project13.title">Theories and Methods for Railway Logistics Cost Reduction and Efficiency Improvement</h3>
+              <p class="project-line" data-i18n="project13.line">Role: Participant. Period: 2026.01 - 2029.12.</p>
               <div class="project-meta">
-                <span>NSFC Joint Fund Key Project</span>
+                <span data-i18n="project13.meta1">NSFC Joint Fund Key Project</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="12">
             <div>
-              <h3>Multimodal Railway Transport Operation Organization and Optimization for the Whole Logistics Chain</h3>
-              <p class="project-line">Role: Participant and sub-project lead. Period: 2026.01 - 2029.12.</p>
+              <h3 data-i18n="project12.title">Multimodal Railway Transport Operation Organization and Optimization for the Whole Logistics Chain</h3>
+              <p class="project-line" data-i18n="project12.line">Role: Participant and sub-project lead. Period: 2026.01 - 2029.12.</p>
               <div class="project-meta">
-                <span>NSFC Joint Fund Key Project topic</span>
-                <span>Railway logistics cost reduction and efficiency improvement</span>
+                <span data-i18n="project12.meta1">NSFC Joint Fund Key Project topic</span>
+                <span data-i18n="project12.meta2">Railway logistics cost reduction and efficiency improvement</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="11">
             <div>
-              <h3>Smart Operation Organization for Railway Freight Hubs under Rail-Road-Water Coordination</h3>
-              <p class="project-line">Role: Participant and sub-project lead. Period: 2026.01 - 2028.12.</p>
+              <h3 data-i18n="project11.title">Smart Operation Organization for Railway Freight Hubs under Rail-Road-Water Coordination</h3>
+              <p class="project-line" data-i18n="project11.line">Role: Participant and sub-project lead. Period: 2026.01 - 2028.12.</p>
               <div class="project-meta">
-                <span>National Key R&amp;D Program sub-project</span>
-                <span>Large railway freight hub intelligent operation technology</span>
+                <span data-i18n="project11.meta1">National Key R&amp;D Program sub-project</span>
+                <span data-i18n="project11.meta2">Large railway freight hub intelligent operation technology</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="10">
             <div>
-              <h3>Key Technologies for Resilience Improvement of Road-Rail Transport Corridors in the Chengdu-Chongqing Economic Circle</h3>
-              <p class="project-line">Role: Participant. Period: 2025.01 - 2027.12. Project lead: Xiaobo Liu.</p>
+              <h3 data-i18n="project10.title">Key Technologies for Resilience Improvement of Road-Rail Transport Corridors in the Chengdu-Chongqing Economic Circle</h3>
+              <p class="project-line" data-i18n="project10.line">Role: Participant. Period: 2025.01 - 2027.12. Project lead: Xiaobo Liu.</p>
               <div class="project-meta">
-                <span>Sichuan Science and Technology Program "Pianji" Project</span>
+                <span data-i18n="project10.meta1">Sichuan Science and Technology Program "Pianji" Project</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="9">
             <div>
-              <h3>Multi-Decision-Maker Multi-Objective Distributed Collaborative Optimization for Intermodal Transport</h3>
-              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
+              <h3 data-i18n="project9.title">Multi-Decision-Maker Multi-Objective Distributed Collaborative Optimization for Intermodal Transport</h3>
+              <p class="project-line" data-i18n="project9.line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
               <div class="project-meta">
-                <span>Fundamental Research Funds for the Central Universities</span>
+                <span data-i18n="project9.meta1">Fundamental Research Funds for the Central Universities</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="8">
             <div>
-              <h3>Multi-Agent Collaborative Transport Organization on Stochastic Time-Varying Intermodal Networks in Sichuan's Four Directions and Eight Corridors</h3>
-              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2026.12.</p>
+              <h3 data-i18n="project8.title">Multi-Agent Collaborative Transport Organization on Stochastic Time-Varying Intermodal Networks in Sichuan's Four Directions and Eight Corridors</h3>
+              <p class="project-line" data-i18n="project8.line">Role: Principal Investigator. Period: 2025.01 - 2026.12.</p>
               <div class="project-meta">
-                <span>Sichuan Natural Science Foundation Youth Project</span>
+                <span data-i18n="project8.meta1">Sichuan Natural Science Foundation Youth Project</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="7">
             <div>
-              <h3>Intelligent Transport Organization Optimization for Intermodal Transport</h3>
-              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
+              <h3 data-i18n="project7.title">Intelligent Transport Organization Optimization for Intermodal Transport</h3>
+              <p class="project-line" data-i18n="project7.line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
               <div class="project-meta">
-                <span>Sichuan Tianfu Emei Young Talent Program</span>
+                <span data-i18n="project7.meta1">Sichuan Tianfu Emei Young Talent Program</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="6">
             <div>
-              <h3>Dynamic Collaborative Optimization of Intermodal Transport Planning under Time Uncertainty across Rail-Road-Water Networks</h3>
-              <p class="project-line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
+              <h3 data-i18n="project6.title">Dynamic Collaborative Optimization of Intermodal Transport Planning under Time Uncertainty across Rail-Road-Water Networks</h3>
+              <p class="project-line" data-i18n="project6.line">Role: Principal Investigator. Period: 2025.01 - 2027.12.</p>
               <div class="project-meta">
-                <span>National Natural Science Foundation of China Youth Project</span>
+                <span data-i18n="project6.meta1">National Natural Science Foundation of China Youth Project</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="5">
             <div>
-              <h3>Dynamic Optimization of Tangshan Port Intermodal Transport Planning under Rail-Road-Water Network Time Uncertainty</h3>
-              <p class="project-line">Role: Principal Investigator. Period: 2024.01 - 2026.12.</p>
+              <h3 data-i18n="project5.title">Dynamic Optimization of Tangshan Port Intermodal Transport Planning under Rail-Road-Water Network Time Uncertainty</h3>
+              <p class="project-line" data-i18n="project5.line">Role: Principal Investigator. Period: 2024.01 - 2026.12.</p>
               <div class="project-meta">
-                <span>Hebei Natural Science Foundation Youth Project</span>
+                <span data-i18n="project5.meta1">Hebei Natural Science Foundation Youth Project</span>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="4">
             <div>
-              <h3>Seamless Shared Urban Mobility</h3>
-              <p class="project-line">Role: Participant. Period: 2023.06 - 2026.06. Project lead: Oded Cats.</p>
+              <h3 data-i18n="project4.title">Seamless Shared Urban Mobility</h3>
+              <p class="project-line" data-i18n="project4.line">Role: Participant. Period: 2023.06 - 2026.06. Project lead: Oded Cats.</p>
               <div class="project-meta">
-                <span>European Horizon 2020</span>
-                <a href="https://sum-project.eu" target="_blank" rel="noopener">Website</a>
+                <span data-i18n="project4.meta1">European Horizon 2020</span>
+                <a href="https://sum-project.eu" target="_blank" rel="noopener" data-i18n="project.website">Website</a>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="3">
             <div>
-              <h3>Novel Inland Waterway Transport Concepts for Moving Freight Effectively</h3>
-              <p class="project-line">Role: Participant. Period: 2020.01 - 2024.07. Project lead: Rudy R. Negenborn.</p>
+              <h3 data-i18n="project3.title">Novel Inland Waterway Transport Concepts for Moving Freight Effectively</h3>
+              <p class="project-line" data-i18n="project3.line">Role: Participant. Period: 2020.01 - 2024.07. Project lead: Rudy R. Negenborn.</p>
               <div class="project-meta">
-                <span>European Horizon 2020</span>
-                <a href="https://novimove.eu/" target="_blank" rel="noopener">Website</a>
+                <span data-i18n="project3.meta1">European Horizon 2020</span>
+                <a href="https://novimove.eu/" target="_blank" rel="noopener" data-i18n="project.website">Website</a>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="2">
             <div>
-              <h3>Complexity Methods for Predictive Synchromodality</h3>
-              <p class="project-line">Role: Participant. Period: 2019.09 - 2022.09. Project lead: R. D. van der Mei.</p>
+              <h3 data-i18n="project2.title">Complexity Methods for Predictive Synchromodality</h3>
+              <p class="project-line" data-i18n="project2.line">Role: Participant. Period: 2019.09 - 2022.09. Project lead: R. D. van der Mei.</p>
               <div class="project-meta">
-                <span>Dutch Research Council (NWO)</span>
-                <a href="https://www.nwo.nl/en/projects/43916120" target="_blank" rel="noopener">Website</a>
+                <span data-i18n="project2.meta1">Dutch Research Council (NWO)</span>
+                <a href="https://www.nwo.nl/en/projects/43916120" target="_blank" rel="noopener" data-i18n="project.website">Website</a>
               </div>
             </div>
           </li>
 
           <li class="project-item" data-number="1">
             <div>
-              <h3>Semantic Spatial Modeling of Port Water Traffic Situation</h3>
-              <p class="project-line">Role: Participant. Period: 2017.01 - 2020.12. Project lead: Yuanqiao Wen.</p>
+              <h3 data-i18n="project1.title">Semantic Spatial Modeling of Port Water Traffic Situation</h3>
+              <p class="project-line" data-i18n="project1.line">Role: Participant. Period: 2017.01 - 2020.12. Project lead: Yuanqiao Wen.</p>
               <div class="project-meta">
-                <span>National Natural Science Foundation of China General Program</span>
+                <span data-i18n="project1.meta1">National Natural Science Foundation of China General Program</span>
               </div>
             </div>
           </li>
@@ -1320,75 +1371,266 @@
       </section>
 
       <section class="section" id="honors">
-        <h2>Honors, Intellectual Property, and Service</h2>
+        <h2 data-i18n="honors.heading">Honors, Intellectual Property, and Service</h2>
         <div class="simple-grid">
           <article class="text-card">
-            <h3>Selected Honors</h3>
+            <h3 data-i18n="honors.selected.title">Selected Honors</h3>
             <ul class="list">
-              <li>Sichuan Tianfu Emei Program Young Talent, 2025.</li>
-              <li>Best Academic Paper Award, 103rd Transportation Research Board Annual Meeting, 2024. <a href="assets/files/TRB_103rd_Best_Academic_Paper_Award.pdf">Certificate</a></li>
-              <li>Young Talent Faculty, Southwest Jiaotong University, 2024.</li>
-              <li>Best Session Paper, 2nd Asian Conference on Artificial Intelligence Technology, 2018.</li>
+              <li data-i18n="honors.item1">Sichuan Tianfu Emei Program Young Talent, 2025.</li>
+              <li data-i18n="honors.item2">Best Academic Paper Award, 103rd Transportation Research Board Annual Meeting, 2024. <a href="assets/files/TRB_103rd_Best_Academic_Paper_Award.pdf">Certificate</a></li>
+              <li data-i18n="honors.item3">Young Talent Faculty, Southwest Jiaotong University, 2024.</li>
+              <li data-i18n="honors.item4">Best Session Paper, 2nd Asian Conference on Artificial Intelligence Technology, 2018.</li>
             </ul>
           </article>
           <article class="text-card">
-            <h3>Intellectual Property</h3>
+            <h3 data-i18n="ip.title">Intellectual Property</h3>
             <ul class="list">
-              <li>8 national invention patents applied or granted.</li>
-              <li>2 software copyrights, including an emergency-logistics multimodal dynamic routing optimization system.</li>
-              <li>Recent topics include low-altitude ground coordination, collaborative port optimization, and UAV-integrated emergency logistics.</li>
+              <li data-i18n="ip.item1">8 national invention patents applied or granted.</li>
+              <li data-i18n="ip.item2">2 software copyrights, including an emergency-logistics multimodal dynamic routing optimization system.</li>
+              <li data-i18n="ip.item3">Recent topics include low-altitude ground coordination, collaborative port optimization, and UAV-integrated emergency logistics.</li>
             </ul>
           </article>
           <article class="text-card">
-            <h3>Academic Service</h3>
-            <p>NSFC proposal reviewer, Ministry of Education graduate thesis reviewer, and young member of the Transportation Planning Division of the World Transport Convention.</p>
+            <h3 data-i18n="service.title">Academic Service</h3>
+            <p data-i18n="service.body">NSFC proposal reviewer, Ministry of Education graduate thesis reviewer, and young member of the Transportation Planning Division of the World Transport Convention.</p>
           </article>
           <article class="text-card">
-            <h3>Journal Reviewing</h3>
-            <p>Reviewer for Transportation Research Part B/C/E, IEEE Transactions on Intelligent Transportation Systems, Scientific Reports, Transportation, npj Sustainable Mobility and Transport, OR Spectrum, and related journals.</p>
+            <h3 data-i18n="reviewing.title">Journal Reviewing</h3>
+            <p data-i18n="reviewing.body">Reviewer for Transportation Research Part B/C/E, IEEE Transactions on Intelligent Transportation Systems, Scientific Reports, Transportation, npj Sustainable Mobility and Transport, OR Spectrum, and related journals.</p>
           </article>
         </div>
       </section>
 
       <section class="section" id="teaching">
-        <h2>Teaching and Students</h2>
+        <h2 data-i18n="teaching.heading">Teaching and Students</h2>
         <div class="simple-grid">
           <article class="text-card">
-            <h3>Courses</h3>
+            <h3 data-i18n="courses.title">Courses</h3>
             <ul class="list">
-              <li>Intelligent Logistics System</li>
-              <li>Data Science</li>
-              <li>Frontiers in Logistics</li>
-              <li>Analysis and Optimization in Logistics Systems</li>
-              <li>Planning and Operating Public Transport Systems</li>
+              <li data-i18n="course1">Intelligent Logistics System</li>
+              <li data-i18n="course2">Data Science</li>
+              <li data-i18n="course3">Frontiers in Logistics</li>
+              <li data-i18n="course4">Analysis and Optimization in Logistics Systems</li>
+              <li data-i18n="course5">Planning and Operating Public Transport Systems</li>
             </ul>
           </article>
           <article class="text-card">
-            <h3>Student Topics</h3>
+            <h3 data-i18n="topics.title">Student Topics</h3>
             <ul class="list">
-              <li>Resilient intermodal transport planning</li>
-              <li>Federated learning for collaborative synchromodal transport</li>
-              <li>Shared micro-mobility scheduling and rebalancing</li>
-              <li>Container-terminal strategies with reinforcement learning</li>
+              <li data-i18n="topic1">Resilient intermodal transport planning</li>
+              <li data-i18n="topic2">Federated learning for collaborative synchromodal transport</li>
+              <li data-i18n="topic3">Shared micro-mobility scheduling and rebalancing</li>
+              <li data-i18n="topic4">Container-terminal strategies with reinforcement learning</li>
             </ul>
           </article>
         </div>
-        <p class="note">Several master's positions are typically available each year. Prospective students can check the <a href="https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb" target="_blank" rel="noopener">admissions information page</a>.</p>
+        <p class="note" data-i18n="teaching.note">Several master's positions are typically available each year. Prospective students can check the <a href="https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb" target="_blank" rel="noopener">admissions information page</a>.</p>
       </section>
 
       <section class="section" id="contact">
-        <h2>Contact</h2>
-        <p>Email: yimengzhang@swjtu.edu.cn</p>
-        <p>School of Transportation and Logistics, Southwest Jiaotong University, Chengdu, Sichuan, China.</p>
+        <h2 data-i18n="contact.heading">Contact</h2>
+        <p data-i18n="contact.email">Email: yimengzhang@swjtu.edu.cn</p>
+        <p data-i18n="contact.address">School of Transportation and Logistics, Southwest Jiaotong University, Chengdu, Sichuan, China.</p>
       </section>
     </main>
   </div>
 
   <footer class="footer">
     <div class="footer-inner">
-      <span>© 2026 Yimeng Zhang. Last updated June 2026.</span>
-      <span><a href="#top">Back to top</a></span>
+      <span data-i18n="footer.updated">© 2026 Yimeng Zhang. Last updated June 2026.</span>
+      <span><a href="#top" data-i18n="footer.top">Back to top</a></span>
     </div>
   </footer>
+  <script>
+    const zh = {
+      "brand.name": "张义萌",
+      "nav.about": "简介",
+      "nav.research": "研究方向",
+      "nav.appointments": "经历",
+      "nav.publications": "论文",
+      "nav.projects": "项目",
+      "nav.honors": "荣誉",
+      "nav.teaching": "教学",
+      "nav.contact": "联系",
+      "profile.name": "张义萌",
+      "profile.role": "副研究员",
+      "profile.affiliation": "西南交通大学<br>交通运输与物流学院",
+      "profile.supervisor": "硕士生导师",
+      "profile.location": "中国成都",
+      "profile.scholar": "谷歌学术",
+      "facts.heading": "概览",
+      "facts.publications": "篇论文",
+      "facts.first": "篇第一作者或通讯作者论文",
+      "facts.citations": "Google Scholar 引用 574 次，h 指数 11（2026 年 5 月快照）",
+      "facts.ip": "项专利与软件著作权（申请或授权）",
+      "about.heading": "简介",
+      "about.lead": "我的研究聚焦多式联运、协同联运与水运系统中的 AI 驱动优化。",
+      "about.body1": "研究方法包括运筹优化、数据挖掘、强化学习与偏好学习，服务于动态、协同的运输组织决策。应用场景涵盖公铁水货运网络、公共交通与共享出行、水运物流、港口作业以及低空空地协同物流。",
+      "about.body2": "我博士毕业于代尔夫特理工大学，师从 Rudy R. Negenborn 教授和 Bilge Atasoy 博士；随后与 Oded Cats 教授、Shadi Sharif Azadeh 博士合作开展可持续多方式客运与共享出行研究。",
+      "tag.or": "运筹优化",
+      "tag.rl": "强化学习",
+      "tag.synchromodal": "协同联运货运",
+      "tag.maritime": "水运物流",
+      "tag.shared": "共享出行",
+      "tag.routing": "车辆路径",
+      "tag.preference": "偏好学习",
+      "research.heading": "研究方向",
+      "research.card1.title": "动态多式联运组织",
+      "research.card1.body": "面向公铁水网络、低空物流、公共交通与共享出行，在随机时间、需求与能力约束下构建运输组织决策模型。",
+      "research.card2.title": "学习辅助优化",
+      "research.card2.body": "面向实时决策的混合强化学习、自适应大邻域搜索、多智能体控制、随机优化与偏好学习方法。",
+      "research.card3.title": "水运与港口物流",
+      "research.card3.body": "AIS 数据挖掘、船队路径、船舶排放、泊位分配、港口协同优化与船舶行为语义建模。",
+      "research.card4.title": "可持续协同系统",
+      "research.card4.body": "协调运营商、场站、货主、旅客与公共部门，在成本、时间、排放和服务质量之间进行综合权衡。",
+      "appointments.heading": "工作经历与教育背景",
+      "appointments.associate.title": "副研究员，西南交通大学",
+      "appointments.associate.body": "交通运输与物流学院，从事多式联运优化与 AI 驱动物流方向的科研和研究生指导。",
+      "appointments.assistant.title": "助理教授，西南交通大学",
+      "appointments.assistant.body": "交通运输与物流学院。",
+      "appointments.postdoc.title": "博士后研究员 / 合作者，代尔夫特理工大学",
+      "appointments.postdoc.body": "与 Oded Cats 教授、Shadi Sharif Azadeh 博士合作开展可持续多方式客运与共享出行研究。",
+      "appointments.phd.title": "博士，代尔夫特理工大学",
+      "appointments.phd.body": "交通工程与物流方向。博士论文：<a href=\"assets/files/Yimeng_Zhang_PhD_Thesis.pdf\">Flexible, Dynamic, and Collaborative Synchromodal Transport Planning Considering Preferences</a>。",
+      "appointments.whut.title": "武汉理工大学",
+      "appointments.whut.body": "交通信息工程及控制硕士；航海技术 / 交通规划方向本科。",
+      "publications.heading": "论文",
+      "publications.lead": "按最新论文在前展示；编号仍按发表时间从旧到新排列。已有全文的论文题目可点击打开 PDF。",
+      "publications.authorNote": "* 通讯作者。",
+      "publications.pending": "全文待上线",
+      "publications.scholarNote": "最新引用记录请查看 <a href=\"https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en\" target=\"_blank\" rel=\"noopener\">Google Scholar</a>。",
+      "projects.heading": "科研项目",
+      "project13.title": "铁路物流降本增效理论与方法研究",
+      "project13.line": "角色：参与人。周期：2026.01 - 2029.12。",
+      "project13.meta1": "国家自然科学基金联合基金重点项目",
+      "project12.title": "面向物流全链条的铁路多式联运运营组织与优化方法",
+      "project12.line": "角色：参与人、子课题负责人。周期：2026.01 - 2029.12。",
+      "project12.meta1": "国家自然科学基金联合基金重点项目课题",
+      "project12.meta2": "铁路物流降本增效",
+      "project11.title": "公铁水多方式协同下铁路货运枢纽智慧化作业组织",
+      "project11.line": "角色：参与人、子课题负责人。周期：2026.01 - 2028.12。",
+      "project11.meta1": "国家重点研发计划子课题",
+      "project11.meta2": "大型铁路货运枢纽智慧化运营技术",
+      "project10.title": "成渝双城经济圈公铁运输通道韧性提升关键技术",
+      "project10.line": "角色：参与人。周期：2025.01 - 2027.12。项目负责人：刘小波。",
+      "project10.meta1": "四川省科技计划偏基项目",
+      "project9.title": "多式联运多决策者多目标分布式协同优化研究",
+      "project9.line": "角色：项目负责人。周期：2025.01 - 2027.12。",
+      "project9.meta1": "中央高校基本科研业务费专项资金",
+      "project8.title": "四川四向八廊多式联运随机时变网络下多主体协同运输组织优化研究",
+      "project8.line": "角色：项目负责人。周期：2025.01 - 2026.12。",
+      "project8.meta1": "四川省自然科学基金青年项目",
+      "project7.title": "多式联运智能化运输组织优化",
+      "project7.line": "角色：项目负责人。周期：2025.01 - 2027.12。",
+      "project7.meta1": "四川天府峨眉计划青年人才项目",
+      "project6.title": "公铁水多网时间不确定性下多式联运运输计划动态协同优化研究",
+      "project6.line": "角色：项目负责人。周期：2025.01 - 2027.12。",
+      "project6.meta1": "国家自然科学基金青年项目",
+      "project5.title": "公铁水多网时间不确定性下唐山港多式联运运输计划动态优化研究",
+      "project5.line": "角色：项目负责人。周期：2024.01 - 2026.12。",
+      "project5.meta1": "河北省自然科学基金青年项目",
+      "project4.title": "无缝共享城市出行",
+      "project4.line": "角色：参与人。周期：2023.06 - 2026.06。项目负责人：Oded Cats。",
+      "project4.meta1": "欧盟 Horizon 2020 项目",
+      "project3.title": "面向高效货运的新型内河运输概念",
+      "project3.line": "角色：参与人。周期：2020.01 - 2024.07。项目负责人：Rudy R. Negenborn。",
+      "project3.meta1": "欧盟 Horizon 2020 项目",
+      "project2.title": "预测型协同联运复杂性方法",
+      "project2.line": "角色：参与人。周期：2019.09 - 2022.09。项目负责人：R. D. van der Mei。",
+      "project2.meta1": "荷兰科学研究组织 NWO",
+      "project1.title": "港口水上交通态势的语义空间建模",
+      "project1.line": "角色：参与人。周期：2017.01 - 2020.12。项目负责人：闻元桥。",
+      "project1.meta1": "国家自然科学基金面上项目",
+      "project.website": "项目网站",
+      "honors.heading": "荣誉、知识产权与学术服务",
+      "honors.selected.title": "代表性荣誉",
+      "honors.item1": "四川天府峨眉计划青年人才，2025。",
+      "honors.item2": "第 103 届美国交通运输研究委员会年会最佳学术论文奖，2024。<a href=\"assets/files/TRB_103rd_Best_Academic_Paper_Award.pdf\">获奖证明</a>",
+      "honors.item3": "西南交通大学青年人才，2024。",
+      "honors.item4": "第二届亚洲人工智能技术大会 Best Session Paper，2018。",
+      "ip.title": "知识产权",
+      "ip.item1": "申请或授权国家发明专利 8 项。",
+      "ip.item2": "软件著作权 2 项，包括应急物流多式联运动态路径优化系统。",
+      "ip.item3": "近期主题包括低空地面协同、港口协同优化和无人机参与的应急物流。",
+      "service.title": "学术服务",
+      "service.body": "国家自然科学基金通讯评审专家、教育部学位论文评审专家、世界交通运输大会交通规划学部青年委员。",
+      "reviewing.title": "期刊审稿",
+      "reviewing.body": "为 Transportation Research Part B/C/E、IEEE Transactions on Intelligent Transportation Systems、Scientific Reports、Transportation、npj Sustainable Mobility and Transport、OR Spectrum 等期刊审稿。",
+      "teaching.heading": "教学与招生",
+      "courses.title": "课程",
+      "course1": "智能物流系统",
+      "course2": "数据科学",
+      "course3": "物流前沿",
+      "course4": "物流系统分析与优化",
+      "course5": "公共交通系统规划与运营",
+      "topics.title": "学生研究方向",
+      "topic1": "韧性多式联运组织优化",
+      "topic2": "面向协同联运的联邦学习",
+      "topic3": "共享微出行调度与再平衡",
+      "topic4": "基于强化学习的集装箱码头策略优化",
+      "teaching.note": "每年通常招收若干名硕士研究生。感兴趣的同学可查看 <a href=\"https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb\" target=\"_blank\" rel=\"noopener\">招生信息页面</a>。",
+      "contact.heading": "联系",
+      "contact.email": "邮箱：yimengzhang@swjtu.edu.cn",
+      "contact.address": "中国四川成都，西南交通大学交通运输与物流学院。",
+      "footer.updated": "© 2026 张义萌。最后更新：2026 年 6 月。",
+      "footer.top": "回到顶部"
+    };
+
+    const defaults = new Map();
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      defaults.set(el.dataset.i18n, el.innerHTML);
+    });
+
+    const storageKey = "yimeng-homepage-language";
+    const getSavedLanguage = () => {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch {
+        return null;
+      }
+    };
+
+    const saveLanguage = (language) => {
+      try {
+        localStorage.setItem(storageKey, language);
+      } catch {
+        // Local files can block storage in some browsers.
+      }
+    };
+
+    const setLanguage = (language) => {
+      const isChinese = language === "zh";
+      document.documentElement.lang = isChinese ? "zh-CN" : "en";
+      document.title = isChinese ? "张义萌 | 个人主页" : "Yimeng Zhang | Academic Homepage";
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute(
+          "content",
+          isChinese
+            ? "张义萌，西南交通大学副研究员，研究方向包括多式联运优化、协同联运货运、水运物流和 AI 驱动交通运输系统。"
+            : "Yimeng Zhang, Associate Professor at Southwest Jiaotong University. Research in multimodal transport optimization, synchromodal freight planning, maritime logistics, and AI-driven transportation systems."
+        );
+      }
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.dataset.i18n;
+        el.innerHTML = isChinese && Object.prototype.hasOwnProperty.call(zh, key)
+          ? zh[key]
+          : defaults.get(key);
+      });
+
+      document.querySelectorAll("[data-lang-button]").forEach((button) => {
+        button.setAttribute("aria-pressed", button.dataset.langButton === (isChinese ? "zh" : "en") ? "true" : "false");
+      });
+
+      saveLanguage(isChinese ? "zh" : "en");
+    };
+
+    document.querySelectorAll("[data-lang-button]").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.langButton));
+    });
+
+    setLanguage(getSavedLanguage() === "zh" ? "zh" : "en");
+  </script>
 </body>
 </html>
