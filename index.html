@@ -593,6 +593,22 @@
       font-size: 13px;
     }
 
+    .footer-meta,
+    .visitor-counter {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .visitor-counter {
+      gap: 8px;
+    }
+
+    .visitor-counter span {
+      white-space: nowrap;
+    }
+
     @media (max-width: 930px) {
       .page {
         grid-template-columns: 1fr;
@@ -1436,10 +1452,17 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <span data-i18n="footer.updated">© 2026 Yimeng Zhang. Last updated June 2026.</span>
+      <span class="footer-meta">
+        <span data-i18n="footer.updated">© 2026 Yimeng Zhang. Last updated June 2026.</span>
+        <span class="visitor-counter" aria-label="Visitor statistics">
+          <span id="busuanzi_container_site_uv"><span data-i18n="footer.visitors">Visitors</span>: <span id="busuanzi_value_site_uv">-</span></span>
+          <span id="busuanzi_container_page_pv"><span data-i18n="footer.views">Views</span>: <span id="busuanzi_value_page_pv">-</span></span>
+        </span>
+      </span>
       <span><a href="#top" data-i18n="footer.top">Back to top</a></span>
     </div>
   </footer>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <script>
     const zh = {
       "brand.name": "张义萌",
@@ -1585,6 +1608,8 @@
       "contact.email": "邮箱：yimengzhang@swjtu.edu.cn",
       "contact.address": "中国四川成都，西南交通大学交通运输与物流学院。",
       "footer.updated": "© 2026 张义萌。最后更新：2026 年 6 月。",
+      "footer.visitors": "访客",
+      "footer.views": "访问量",
       "footer.top": "回到顶部"
     };
 
