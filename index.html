@@ -567,6 +567,19 @@
       margin: 7px 0;
     }
 
+    .wide-card {
+      grid-column: 1 / -1;
+    }
+
+    .reviewer-list {
+      column-count: 2;
+      column-gap: 30px;
+    }
+
+    .reviewer-list li {
+      break-inside: avoid;
+    }
+
     .note {
       margin-top: 13px;
       padding: 13px 15px;
@@ -654,6 +667,14 @@
         grid-template-columns: 1fr;
       }
 
+      .wide-card {
+        grid-column: auto;
+      }
+
+      .reviewer-list {
+        column-count: 1;
+      }
+
       .publication::before,
       .project-item::before {
         justify-self: start;
@@ -714,6 +735,7 @@
           <a href="#research" data-i18n="nav.research">Research</a>
           <a href="#appointments" data-i18n="nav.appointments">Appointments</a>
           <a href="#publications" data-i18n="nav.publications">Publications</a>
+          <a href="#intellectual-property" data-i18n="nav.ip">Intellectual Property</a>
           <a href="#projects" data-i18n="nav.projects">Projects</a>
           <a href="#honors" data-i18n="nav.honors">Honors</a>
           <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
@@ -734,11 +756,11 @@
         <h1 data-i18n="profile.name">Yimeng Zhang</h1>
         <p class="role" data-i18n="profile.role">Associate Professor</p>
         <p data-i18n="profile.affiliation">School of Transportation and Logistics<br>Southwest Jiaotong University</p>
-        <p data-i18n="profile.supervisor">Master's Supervisor</p>
+        <p data-i18n="profile.supervisor">Doctoral and Master's Supervisor</p>
         <p data-i18n="profile.location">Chengdu, China</p>
         <p>yimengzhang@swjtu.edu.cn</p>
         <div class="profile-links">
-          <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en" target="_blank" rel="noopener" data-i18n="profile.scholar">Scholar</a>
+          <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=KldVztcAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" target="_blank" rel="noopener" data-i18n="profile.scholar">Scholar</a>
           <a href="https://orcid.org/0000-0002-6885-5449" target="_blank" rel="noopener">ORCID</a>
           <a href="https://www.researchgate.net/profile/Yimeng-Zhang-11" target="_blank" rel="noopener">ResearchGate</a>
           <a href="https://faculty.swjtu.edu.cn/zhangyimeng/zh_CN/index.htm" target="_blank" rel="noopener">SWJTU</a>
@@ -750,8 +772,8 @@
         <ul class="fact-list">
           <li><strong>31</strong><span data-i18n="facts.publications">publications listed</span></li>
           <li><strong>20</strong><span data-i18n="facts.first">first- or corresponding-author papers</span></li>
-          <li><strong>574</strong><span data-i18n="facts.citations">Google Scholar citations, h-index 11, May 2026 snapshot</span></li>
-          <li><strong>8 + 2</strong><span data-i18n="facts.ip">patents and software copyrights applied or granted</span></li>
+          <li><strong>622</strong><span data-i18n="facts.citations">Google Scholar citations, h-index 12, i10-index 13, July 2026 snapshot</span></li>
+          <li><strong>9 + 2</strong><span data-i18n="facts.ip">patents and software copyrights applied or granted</span></li>
         </ul>
       </section>
     </aside>
@@ -1254,7 +1276,91 @@
           </li>
         </ol>
 
-        <p class="note" data-i18n="publications.scholarNote">For the most current citation record, please see <a href="https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+        <p class="note" data-i18n="publications.scholarNote">For the most current citation record, please see <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=KldVztcAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a>.</p>
+      </section>
+
+      <section class="section" id="intellectual-property">
+        <h2 data-i18n="intellectual.heading">Intellectual Property</h2>
+        <p class="lead" data-i18n="intellectual.lead">National invention patents and software copyrights.</p>
+        <ol class="project-list">
+          <li class="project-item" data-number="11">
+            <div>
+              <h3 data-i18n="ip11.title">Data-Driven Predictive Maintenance Method for Hoisting and Transportation Equipment</h3>
+              <p class="project-line" data-i18n="ip11.line">National invention patent application. Application No. 202610400366.0. Co-inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="10">
+            <div>
+              <h3 data-i18n="ip10.title">Multimodal Collaborative Transport Organization Platform V1.0</h3>
+              <p class="project-line" data-i18n="ip10.line">Software copyright. Registration No. 2026SR0084714.</p>
+              <div class="project-meta"><span data-i18n="ip.type.software">Software copyright</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="9">
+            <div>
+              <h3 data-i18n="ip9.title">Emergency Logistics Multimodal Dynamic Route Optimization System</h3>
+              <p class="project-line" data-i18n="ip9.line">Software copyright. Registration No. 2025SR0094136. First author.</p>
+              <div class="project-meta"><span data-i18n="ip.type.software">Software copyright</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="8">
+            <div>
+              <h3 data-i18n="ip8.title">Multimodal Transport Path Selection Method Based on Multi-Agent Reinforcement Learning</h3>
+              <p class="project-line" data-i18n="ip8.line">National invention patent. No. 2025104927539. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="7">
+            <div>
+              <h3 data-i18n="ip7.title">Passenger-and-Freight Multimodal Planning Method Integrating Low-Altitude and Ground Transport</h3>
+              <p class="project-line" data-i18n="ip7.line">National invention patent. No. 2025105924549. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="6">
+            <div>
+              <h3 data-i18n="ip6.title">Ultrasound Image Recognition Method Based on Reinforcement Learning and BI-RADS Guidelines</h3>
+              <p class="project-line" data-i18n="ip6.line">National invention patent. No. 202510944539. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="5">
+            <div>
+              <h3 data-i18n="ip5.title">Multimodal Transport Route Optimization Method Based on Reinforcement Learning under Demand Uncertainty</h3>
+              <p class="project-line" data-i18n="ip5.line">National invention patent. No. 2025464924539. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="4">
+            <div>
+              <h3 data-i18n="ip4.title">Port Collaborative Optimization Method and System Based on Auction</h3>
+              <p class="project-line" data-i18n="ip4.line">National invention patent. No. 2024113950487. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="3">
+            <div>
+              <h3 data-i18n="ip3.title">Dynamic Route Optimization Method for Joint UAV and Multimodal Transport in Emergency Logistics</h3>
+              <p class="project-line" data-i18n="ip3.line">National invention patent. No. 2025101386464. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="2">
+            <div>
+              <h3 data-i18n="ip2.title">Dynamic Route Optimization Method and Apparatus for Multiple Vessels</h3>
+              <p class="project-line" data-i18n="ip2.line">National invention patent. No. 2024118348376. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+          <li class="project-item" data-number="1">
+            <div>
+              <h3 data-i18n="ip1.title">Priority-Based Multi-Task Scheduling Method and System for Shared Mobility</h3>
+              <p class="project-line" data-i18n="ip1.line">National invention patent. No. ZL2025115361994. First inventor.</p>
+              <div class="project-meta"><span data-i18n="ip.type.patent">National invention patent</span></div>
+            </div>
+          </li>
+        </ol>
       </section>
 
       <section class="section" id="projects">
@@ -1397,7 +1503,7 @@
       </section>
 
       <section class="section" id="honors">
-        <h2 data-i18n="honors.heading">Honors, Intellectual Property, and Service</h2>
+        <h2 data-i18n="honors.heading">Honors and Academic Service</h2>
         <div class="simple-grid">
           <article class="text-card">
             <h3 data-i18n="honors.selected.title">Selected Honors</h3>
@@ -1409,20 +1515,24 @@
             </ul>
           </article>
           <article class="text-card">
-            <h3 data-i18n="ip.title">Intellectual Property</h3>
-            <ul class="list">
-              <li data-i18n="ip.item1">8 national invention patents applied or granted.</li>
-              <li data-i18n="ip.item2">2 software copyrights, including an emergency-logistics multimodal dynamic routing optimization system.</li>
-              <li data-i18n="ip.item3">Recent topics include low-altitude ground coordination, collaborative port optimization, and UAV-integrated emergency logistics.</li>
-            </ul>
-          </article>
-          <article class="text-card">
             <h3 data-i18n="service.title">Academic Service</h3>
             <p data-i18n="service.body">NSFC proposal reviewer, Ministry of Education graduate thesis reviewer, and young member of the Transportation Planning Division of the World Transport Convention.</p>
           </article>
-          <article class="text-card">
+          <article class="text-card wide-card">
             <h3 data-i18n="reviewing.title">Journal Reviewing</h3>
-            <p data-i18n="reviewing.body">Reviewer for Transportation Research Part B/C/E, IEEE Transactions on Intelligent Transportation Systems, Scientific Reports, Transportation, npj Sustainable Mobility and Transport, OR Spectrum, and related journals.</p>
+            <ul class="list reviewer-list">
+              <li data-i18n="reviewing.item1">Transportation Research Part B: Methodological</li>
+              <li data-i18n="reviewing.item2">Transportation Research Part C: Emerging Technologies</li>
+              <li data-i18n="reviewing.item3">Transportation Research Part E: Logistics and Transportation Review</li>
+              <li data-i18n="reviewing.item4">IEEE Transactions on Intelligent Transportation Systems</li>
+              <li data-i18n="reviewing.item5">Scientific Reports</li>
+              <li data-i18n="reviewing.item6">Transportation</li>
+              <li data-i18n="reviewing.item7">npj Sustainable Mobility and Transport</li>
+              <li data-i18n="reviewing.item8">Research in Transportation Business &amp; Management</li>
+              <li data-i18n="reviewing.item9">Multimodal Transportation</li>
+              <li data-i18n="reviewing.item10">OR Spectrum</li>
+              <li data-i18n="reviewing.item11">Engineering Applications of Artificial Intelligence</li>
+            </ul>
           </article>
         </div>
       </section>
@@ -1441,16 +1551,14 @@
             </ul>
           </article>
           <article class="text-card">
-            <h3 data-i18n="topics.title">Student Topics</h3>
+            <h3 data-i18n="supervision.title">Student Supervision</h3>
             <ul class="list">
-              <li data-i18n="topic1">Resilient intermodal transport planning</li>
-              <li data-i18n="topic2">Federated learning for collaborative synchromodal transport</li>
-              <li data-i18n="topic3">Shared micro-mobility scheduling and rebalancing</li>
-              <li data-i18n="topic4">Container-terminal strategies with reinforcement learning</li>
+              <li data-i18n="supervision.master">15 master's students co-supervised at Delft University of Technology and Southwest Jiaotong University.</li>
+              <li data-i18n="supervision.undergraduate">10 undergraduate thesis students supervised.</li>
             </ul>
           </article>
         </div>
-        <p class="note" data-i18n="teaching.note">Several master's positions are typically available each year. Prospective students can check the <a href="https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb" target="_blank" rel="noopener">admissions information page</a>.</p>
+        <p class="note" data-i18n="teaching.note">One to two doctoral students and several master's students are typically admitted each year. Prospective students can check the <a href="https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb" target="_blank" rel="noopener">admissions information page</a>.</p>
       </section>
 
       <section class="section" id="contact">
@@ -1481,6 +1589,7 @@
       "nav.research": "研究方向",
       "nav.appointments": "经历",
       "nav.publications": "论文",
+      "nav.ip": "知识产权",
       "nav.projects": "项目",
       "nav.honors": "荣誉",
       "nav.teaching": "教学",
@@ -1488,13 +1597,13 @@
       "profile.name": "张义萌",
       "profile.role": "副研究员",
       "profile.affiliation": "西南交通大学<br>交通运输与物流学院",
-      "profile.supervisor": "硕士生导师",
+      "profile.supervisor": "博士生导师、硕士生导师",
       "profile.location": "中国成都",
       "profile.scholar": "谷歌学术",
       "facts.heading": "概览",
       "facts.publications": "篇论文",
       "facts.first": "篇第一作者或通讯作者论文",
-      "facts.citations": "Google Scholar 引用 574 次，h 指数 11（2026 年 5 月快照）",
+      "facts.citations": "Google Scholar 引用 622 次，h 指数 12，i10 指数 13（2026 年 7 月快照）",
       "facts.ip": "项专利与软件著作权（申请或授权）",
       "about.heading": "简介",
       "about.lead": "我的研究聚焦多式联运、协同联运与水运系统中的 AI 驱动优化。",
@@ -1531,7 +1640,7 @@
       "publications.lead": "按最新论文在前展示；编号仍按发表时间从旧到新排列。已有全文的论文题目可点击打开 PDF。",
       "publications.authorNote": "* 通讯作者。",
       "publications.pending": "全文待上线",
-      "publications.scholarNote": "最新引用记录请查看 <a href=\"https://scholar.google.com/citations?user=KldVztcAAAAJ&hl=en\" target=\"_blank\" rel=\"noopener\">Google Scholar</a>。",
+      "publications.scholarNote": "最新引用记录请查看 <a href=\"https://scholar.google.com/citations?hl=zh-CN&amp;user=KldVztcAAAAJ&amp;view_op=list_works&amp;sortby=pubdate\" target=\"_blank\" rel=\"noopener\">Google Scholar</a>。",
       "pub29.title": "面向多主体参与的多式联运竞合方法研究综述",
       "pub29.citation": "甘蜜，谭湘蓉，罗骁宇，<strong>张义萌</strong>，朱舒阳，丁万斌，刘晓波，马霖. <em>交通运输工程与信息学报</em>，网络首发。",
       "pub28.title": "考虑图特征的时空交通需求集成预测模型",
@@ -1588,20 +1697,52 @@
       "project1.line": "角色：参与人。周期：2017.01 - 2020.12。项目负责人：文元桥。",
       "project1.meta1": "国家自然科学基金面上项目",
       "project.website": "项目网站",
-      "honors.heading": "荣誉、知识产权与学术服务",
+      "intellectual.heading": "知识产权",
+      "intellectual.lead": "国家发明专利与软件著作权。",
+      "ip.type.software": "软件著作权",
+      "ip.type.patent": "国家发明专利",
+      "ip11.title": "一种基于数据驱动的起重运输设备预测性维护方法",
+      "ip11.line": "国家发明专利申请，申请号：202610400366.0，共同发明人。",
+      "ip10.title": "多式联运协同运输组织平台 V1.0",
+      "ip10.line": "软件著作权，登记号：2026SR0084714。",
+      "ip9.title": "应急物流多式联运动态路径优化系统",
+      "ip9.line": "软件著作权，登记号：2025SR0094136，第一著作人。",
+      "ip8.title": "一种基于多智能体强化学习的多式联运路径选择方法",
+      "ip8.line": "国家发明专利，编号：2025104927539，第一发明人。",
+      "ip7.title": "一种低空与地面交通协同的客货混运多式联运规划方法",
+      "ip7.line": "国家发明专利，编号：2025105924549，第一发明人。",
+      "ip6.title": "基于强化学习和 BI-RADS 指南的超声图像识别方法",
+      "ip6.line": "国家发明专利，编号：202510944539，第一发明人。",
+      "ip5.title": "需求不确定下基于强化学习的多模式交通路径优化方法",
+      "ip5.line": "国家发明专利，编号：2025464924539，第一发明人。",
+      "ip4.title": "一种基于拍卖的港口协同优化方法及系统",
+      "ip4.line": "国家发明专利，编号：2024113950487，第一发明人。",
+      "ip3.title": "应急物流中无人机联合多模式交通的动态路径优化方法",
+      "ip3.line": "国家发明专利，编号：2025101386464，第一发明人。",
+      "ip2.title": "一种多船舶的航线动态优化方法及装置",
+      "ip2.line": "国家发明专利，编号：2024118348376，第一发明人。",
+      "ip1.title": "一种面向共享出行的基于优先级的多任务调度方法及系统",
+      "ip1.line": "国家发明专利，编号：ZL2025115361994，第一发明人。",
+      "honors.heading": "荣誉与学术服务",
       "honors.selected.title": "代表性荣誉",
       "honors.item1": "四川省天府峨眉计划青年人才（原省青年千人），2025。",
       "honors.item2": "第 103 届美国交通运输研究委员会年会最佳学术论文奖，2024。<a href=\"assets/files/TRB_103rd_Best_Academic_Paper_Award.pdf\">获奖证明</a>",
       "honors.item3": "入选2024年度人才师资队伍培育系列“青苗计划”。",
       "honors.item4": "第二届亚洲人工智能技术大会 Best Session Paper，2018。",
-      "ip.title": "知识产权",
-      "ip.item1": "申请或授权国家发明专利 8 项。",
-      "ip.item2": "软件著作权 2 项，包括应急物流多式联运动态路径优化系统。",
-      "ip.item3": "近期主题包括低空地面协同、港口协同优化和无人机参与的应急物流。",
       "service.title": "学术服务",
       "service.body": "国家自然科学基金通讯评审专家、教育部学位论文评审专家、世界交通运输大会交通规划学部青年委员。",
       "reviewing.title": "期刊审稿",
-      "reviewing.body": "为 Transportation Research Part B/C/E、IEEE Transactions on Intelligent Transportation Systems、Scientific Reports、Transportation、npj Sustainable Mobility and Transport、OR Spectrum 等期刊审稿。",
+      "reviewing.item1": "Transportation Research Part B: Methodological",
+      "reviewing.item2": "Transportation Research Part C: Emerging Technologies",
+      "reviewing.item3": "Transportation Research Part E: Logistics and Transportation Review",
+      "reviewing.item4": "IEEE Transactions on Intelligent Transportation Systems",
+      "reviewing.item5": "Scientific Reports",
+      "reviewing.item6": "Transportation",
+      "reviewing.item7": "npj Sustainable Mobility and Transport",
+      "reviewing.item8": "Research in Transportation Business &amp; Management",
+      "reviewing.item9": "Multimodal Transportation",
+      "reviewing.item10": "OR Spectrum",
+      "reviewing.item11": "Engineering Applications of Artificial Intelligence",
       "teaching.heading": "教学与招生",
       "courses.title": "课程",
       "course1": "智能物流系统",
@@ -1609,12 +1750,10 @@
       "course3": "物流前沿",
       "course4": "物流系统分析与优化",
       "course5": "公共交通系统规划与运营",
-      "topics.title": "学生研究方向",
-      "topic1": "韧性多式联运组织优化",
-      "topic2": "面向协同联运的联邦学习",
-      "topic3": "共享微出行调度与再平衡",
-      "topic4": "基于强化学习的集装箱码头策略优化",
-      "teaching.note": "每年通常招收若干名硕士研究生。感兴趣的同学可查看 <a href=\"https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb\" target=\"_blank\" rel=\"noopener\">招生信息页面</a>。",
+      "supervision.title": "学生指导",
+      "supervision.master": "在代尔夫特理工大学和西南交通大学累计联合指导硕士研究生 15 人。",
+      "supervision.undergraduate": "累计指导本科生毕业论文 10 人。",
+      "teaching.note": "每年通常招收博士研究生 1-2 名、硕士研究生若干名。感兴趣的同学可查看 <a href=\"https://scnn7c4bl5hc.feishu.cn/wiki/BcrKw1IIAiA8H8kSPr8cBsr2nhb\" target=\"_blank\" rel=\"noopener\">招生信息页面</a>。",
       "contact.heading": "联系",
       "contact.email": "邮箱：yimengzhang@swjtu.edu.cn",
       "contact.address": "中国四川成都，西南交通大学交通运输与物流学院。",
